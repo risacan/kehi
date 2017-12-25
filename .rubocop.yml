@@ -1,0 +1,12 @@
+Rails:
+  Enabled: true
+StringLiterals:
+  EnforcedStyle: double_quotes
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
