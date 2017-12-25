@@ -13,9 +13,7 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  host: localhost
+  url: <%= ENV['DATABASE_URL'] || 'mysql2://root@127.0.0.1:23306' %>
 
 development:
   <<: *default
@@ -50,5 +48,3 @@ test:
 production:
   <<: *default
   database: kehi_production
-  username: kehi
-  password: <%= ENV['KEHI_DATABASE_PASSWORD'] %>
