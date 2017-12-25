@@ -6,12 +6,12 @@ Style/Documentation:
   Enabled: false
 AllCops:
   Include:
-    - '**/Rakefile'
-    - '**/config.ru'
+    - "**/Rakefile"
+    - "**/config.ru"
   Exclude:
-    - 'db/**/*'
-    - 'config/**/*'
-    - 'script/**/*'
+    - "db/**/*"
+    - "config/**/*"
+    - "script/**/*"
     - "bin/**/*"
     - "Gemfile"
     - "Rakefile"
