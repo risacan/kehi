@@ -2,6 +2,8 @@ Rails:
   Enabled: true
 StringLiterals:
   EnforcedStyle: double_quotes
+Style/Documentation:
+  Enabled: false
 AllCops:
   Include:
     - '**/Rakefile'
@@ -10,3 +12,6 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'script/**/*'
+    - "bin/**/*"
+    - "Gemfile"
+    - "Rakefile"
