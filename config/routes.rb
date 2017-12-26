@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'companies/new'
+
   devise_for :users
   root 'pages#index'
 
