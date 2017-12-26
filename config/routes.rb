@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'companies/new'
+  resources :companies
   root 'pages#index'
   get 'pages/show'
   devise_scope :user do
