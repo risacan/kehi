@@ -7,7 +7,8 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
-    if @company.save
+    current_user.company = @company
+    if current_user.save
       redirect_to root_url
     else
       render "new"
