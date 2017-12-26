@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+  skip_before_action :ensure_belongs_to_company
+
   def new
     @company = Company.new
   end
