@@ -43,3 +43,5 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "devise", git: "https://github.com/plataformatec/devise.git"
 gem "erb2haml"
 gem "haml-rails"
+gem "bootstrap-sass"
+gem "jquery-rails"
