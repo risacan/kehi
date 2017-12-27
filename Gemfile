@@ -31,6 +31,7 @@ group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "pry-rails"
   gem "pry-byebug"
+  gem "faker"
 end
 
 group :development do

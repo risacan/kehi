@@ -69,6 +69,8 @@ GEM
     erubi (1.7.0)
     erubis (2.7.0)
     execjs (2.7.0)
+    faker (1.8.7)
+      i18n (>= 0.7)
     ffi (1.9.18)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -209,6 +211,7 @@ DEPENDENCIES
   devise!
   enum_help
   erb2haml
+  faker
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
