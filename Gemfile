@@ -48,4 +48,4 @@ gem "haml-rails"
 gem "bootstrap-sass"
 gem "jquery-rails"
 gem "simple_form"
-
+gem "enum_help"
