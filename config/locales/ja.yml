@@ -1,0 +1,15 @@
+ja:
+  enums:
+    expense:
+      category:
+        category0: 旅費交通費
+        category1: 会議費（1人あたり5,000円以下の飲食）
+        category2: 交際費（1人あたり5,000円超えの飲食）
+        category3: 交際費（飲食以外）
+        category4: 新聞図書費
+        category5: 研修・セミナー代
+        category6: 出張宿泊費
+        category7: 通信費
+        category8: 消耗品費
+        category9: 福利厚生費
+        category10: その他
