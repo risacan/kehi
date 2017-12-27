@@ -16,6 +16,7 @@ class ExpensesController < ApplicationController
 
   def show
     @expense = Expense.find(params[:id])
+    redirect_to root_url unless @expense.user == current_user
   end
 
   private
