@@ -1,2 +1,2 @@
 - expenses.each do |expense|
-  %li= expense.title
+  %li= link_to expense.title, expense_path(expense.id)
