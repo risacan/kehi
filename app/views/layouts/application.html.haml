@@ -11,7 +11,7 @@
       %nav
         - if user_signed_in?
           = link_to "edit profile", edit_user_registration_path
-          = link_to "log out", destroy_user_session_path, method: :delete 
+          = link_to "log out", destroy_user_session_path, method: :delete
           %p
             \ ✉️
             = current_user.email
