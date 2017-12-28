@@ -22,6 +22,8 @@
                         = link_to "#" do
                           = current_user.name
                           %span.label.label-danger admin
+                      %li
+                        = link_to "all expenses", expenses_path
                     - else
                       %li= link_to current_user.name, "#"
                     %li= link_to "edit profile", edit_user_registration_path
