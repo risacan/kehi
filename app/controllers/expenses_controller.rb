@@ -16,12 +16,16 @@ class ExpensesController < ApplicationController
 
   def show
     @expense = Expense.find(params[:id])
-    redirect_to root_url unless @expense.user == current_user
+    redirect_to root_url unless same_company? && current_user.admin?
   end
 
   private
 
   def expense_params
     params.require(:expense).permit(:title, :category)
+  end
+
+  def same_company?
+    @expense.user.company == current_user.company
   end
 end
