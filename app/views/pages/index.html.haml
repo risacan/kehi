@@ -1,5 +1,5 @@
 %h1 Pages#index
 %p Find me in app/views/pages/index.html.erb
-%button= link_to "新たに経費精算！", new_expense_path
+= link_to "新たに経費精算！", new_expense_path, class: "btn btn-default"
 %ul
   = render "expenses/expense", expenses: current_user.expenses
