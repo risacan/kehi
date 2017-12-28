@@ -17,7 +17,13 @@
                   %li= link_to "KEHI", root_url, class: "navbar-brand"
                   %div.collapse.navbar-collapse
                   - if user_signed_in?
-                    %li= link_to current_user.name, "#"
+                    - if current_user.admin
+                      %li
+                        = link_to "#" do
+                          = current_user.name
+                          %span.label.label-danger admin
+                    - else
+                      %li= link_to current_user.name, "#"
                     %li= link_to "edit profile", edit_user_registration_path
                     %li= link_to "log out", destroy_user_session_path, method: :delete
                   - else
