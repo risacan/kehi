@@ -19,6 +19,11 @@ class ExpensesController < ApplicationController
     redirect_to root_url unless same_company? && current_user.admin?
   end
 
+  def index
+    @expenses = current_user.company.expenses
+    redirect_to root_url unless current_user.admin?
+  end
+
   private
 
   def expense_params
