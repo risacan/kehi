@@ -1,3 +1,4 @@
 %div.page-header
   %h1 ALL 経費
-= render "expenses/expense", expenses: @expenses
+- @expenses.each do |expense|
+  = render "expenses/expense", expense: expense

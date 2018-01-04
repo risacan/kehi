@@ -1,7 +1,6 @@
-- expenses.each do |expense|
-  %div
-    %div.panel.panel-default
-      %div.panel-heading= link_to expense.title, expense_path(expense.id)
-      %div.panel-body
-        %h3= expense.user.name
-        %span.label.label-default= expense.category_i18n
+%div
+  %div.panel.panel-default
+    %div.panel-heading= link_to expense.title, expense_path(expense.id)
+    %div.panel-body
+      %h3= expense.user.name
+      %span.label.label-default= expense.category_i18n
