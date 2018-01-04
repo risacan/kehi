@@ -1,80 +1,36 @@
-companies = %w(
-  shining
-  raging
-  risacan
-)
+require "factory_bot"
 
-shining = %w(一十木音也 四ノ宮那月 聖川真斗 一ノ瀬トキヤ 神宮寺レン 来栖翔 愛島セシル)
-raging = %w(鳳瑛一 皇綺羅 帝ナギ 鳳瑛二 桐生院ヴァン 日向大和 天草シオン)
-risacan = %w(risa can)
+FactoryBot.define do
+  factory :company do
+    name { Faker::Company.name }
+  end
 
-companies.each do |c|
-  Company.create(name: c)
-end
+  factory :user do
+    name { Faker::Pokemon.name }
+    email { Faker::Internet.unique.email }
+    password "password"
+    encrypted_password User.new(password: "password").encrypted_password
+    company_id { Company.all.to_a.map(&:id).sample }
+    admin false
+  end
 
-password = "password"
-User.create(
-  name: "risa",
-  email: "risa.watanabe+test@smarthr.co.jp",
-  password: password,
-  encrypted_password: User.new(password: password).encrypted_password,
-  company: Company.find_by(name: "risacan"),
-  admin: true
-)
+  factory :admin, class: User do
+    name "risacan"
+    email "admin@example.com"
+    password "password"
+    encrypted_password User.new(password: "password").encrypted_password
+    company_id 1
+    admin true
+  end
 
-risacan.each do |s|
-  email = Faker::Internet.email
-  user = User.create(
-    name: s,
-    email: email,
-    password: password,
-    encrypted_password: User.new(password: password).encrypted_password,
-    company: Company.find_by(name: "risacan")
-  )
-
-  10.times do |n|
-    Expense.create(
-      title: ["出張代", "RubyKaigiのチケット代", "交際費"].sample,
-      category: Expense.categories.values.sample,
-      user: user
-    )
+  factory :expense do
+    title { Faker::Commerce.product_name }
+    user_id { User.all.to_a.map(&:id).sample }
+    category { Expense.categories.values.sample }
   end
 end
 
-shining.each do |s|
-  email = Faker::Internet.email
-  user = User.create(
-    name: s,
-    email: email,
-    password: password,
-    encrypted_password: User.new(password: password).encrypted_password,
-    company: Company.find_by(name: "shining")
-  )
-
-  10.times do |n|
-    Expense.create(
-      title: ["出張代", "RubyKaigiのチケット代", "交際費"].sample,
-      category: Expense.categories.values.sample,
-      user: user
-    )
-  end
-end
-
-raging.each do |s|
-  email = Faker::Internet.email
-  user = User.create(
-    name: s,
-    email: email,
-    password: password,
-    encrypted_password: User.new(password: password).encrypted_password,
-    company: Company.find_by(name: "raging")
-  )
-
-  10.times do |n|
-    Expense.create(
-      title: ["出張代", "RubyKaigiのチケット代", "交際費"].sample,
-      category: Expense.categories.values.sample,
-      user: user
-    )
-  end
-end
+FactoryBot.create_list(:company, 5)
+FactoryBot.create_list(:user, 50)
+FactoryBot.create(:admin)
+FactoryBot.create_list(:expense, 100)
