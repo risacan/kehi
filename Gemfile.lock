@@ -69,6 +69,10 @@ GEM
     erubi (1.7.0)
     erubis (2.7.0)
     execjs (2.7.0)
+    factory_bot (4.8.2)
+      activesupport (>= 3.0.0)
+    faker (1.8.7)
+      i18n (>= 0.7)
     ffi (1.9.18)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -143,6 +147,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-i18n (5.0.4)
+      i18n (~> 0.7)
+      railties (~> 5.0)
     railties (5.1.4)
       actionpack (= 5.1.4)
       activesupport (= 5.1.4)
@@ -209,6 +216,8 @@ DEPENDENCIES
   devise!
   enum_help
   erb2haml
+  factory_bot
+  faker
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
@@ -218,6 +227,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.7)
   rails (~> 5.1.4)
+  rails-i18n
   sass-rails (~> 5.0)
   simple_form
   tzinfo-data

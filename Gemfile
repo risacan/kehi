@@ -31,6 +31,8 @@ group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "pry-rails"
   gem "pry-byebug"
+  gem "faker"
+  gem "factory_bot"
 end
 
 group :development do
@@ -49,3 +51,4 @@ gem "bootstrap-sass"
 gem "jquery-rails"
 gem "simple_form"
 gem "enum_help"
+gem "rails-i18n"
