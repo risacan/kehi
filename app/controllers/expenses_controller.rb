@@ -20,8 +20,11 @@ class ExpensesController < ApplicationController
   end
 
   def index
-    @expenses = current_user.company.expenses
-    redirect_to root_url unless current_user.admin?
+    if current_user.admin?
+      @expenses = current_user.company.expenses
+    else
+      @expenses = current_user.expenses
+    end
   end
 
   private
