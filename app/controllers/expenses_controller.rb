@@ -27,10 +27,30 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def approve
+    @expense = Expense.find(params[:id])
+    @expense.approved_at = DateTime.now
+    if @expense.save
+      render "show"
+    else
+      render "show"
+    end
+  end
+
+  def reject
+    @expense = Expense.find(params[:id])
+    @expense.rejected_at = DateTime.now
+    if @expense.save
+      render "show"
+    else
+      render "show"
+    end
+  end
+
   private
 
   def expense_params
-    params.require(:expense).permit(:title, :category)
+    params.require(:expense).permit(:title, :category, :approved_at, :rejected_at)
   end
 
   def authorized?
