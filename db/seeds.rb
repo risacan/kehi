@@ -9,7 +9,7 @@ FactoryBot.define do
     name { Faker::Pokemon.name }
     email { Faker::Internet.unique.email }
     password "password"
-    company_id { Company.all.to_a.map(&:id).sample }
+    company_id { Company.all.to_a.map(&:id).sample || FactoryBot.create(:company).id }
     admin false
   end
 
@@ -17,13 +17,13 @@ FactoryBot.define do
     name "risacan"
     email "admin@example.com"
     password "password"
-    company_id 1
+    company_id { Company.all.to_a.map(&:id).first || FactoryBot.create(:company).id }
     admin true
   end
 
   factory :expense do
     title { Faker::Commerce.product_name }
-    user_id { User.all.to_a.map(&:id).sample }
+    user_id { User.all.to_a.map(&:id).sample || FactoryBot.create(:user).id }
     category { Expense.categories.values.sample }
   end
 end
