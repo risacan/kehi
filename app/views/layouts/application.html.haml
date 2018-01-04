@@ -7,19 +7,36 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   %body
-    %header
-      %nav
-        - if user_signed_in?
-          = link_to "edit profile", edit_user_registration_path
-          = link_to "log out", destroy_user_session_path, method: :delete
-          %p
-            \ ✉️
-            = current_user.email
-        - else
-          = link_to "sign up", new_user_registration_path
-          = link_to "log in", new_user_session_path
-    %p.notice
-      = notice
-    %p.alert
-      = alert
-    = yield
+    %div.container-fluid
+      %div.row
+        %div.col-sm-3.col-lg-2
+          %nav.navbar.navbar-default.navbar-fixed-side
+            %div.container
+              %div.navbar-header
+                %ul.nav.navbar-nav
+                  %li= link_to "KEHI", root_url, class: "navbar-brand"
+                  %div.collapse.navbar-collapse
+                  - if user_signed_in?
+                    - if current_user.admin
+                      %li
+                        = link_to "#" do
+                          = current_user.name
+                          %span.label.label-danger admin
+                    - else
+                      %li= link_to current_user.name, "#"
+                    - if current_user.company
+                      %li= link_to current_user.company.name, "#"
+                    %li= link_to "all expenses", expenses_path
+                    %li= link_to "edit profile", edit_user_registration_path
+                    %li= link_to "log out", destroy_user_session_path, method: :delete
+                  - else
+                    %li= link_to "sign up", new_user_registration_path
+                    %li= link_to "log in", new_user_session_path
+        %main.col-sm-9.col-lg-10
+          - if notice
+            %p.alert.alert-success
+              = notice
+          - if alert
+            %p.alert.alert-danger
+              = alert
+          = yield

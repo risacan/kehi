@@ -1,4 +1,6 @@
-%h1 Expenses#show
-%p Find me in app/views/expenses/show.html.haml
-%div= @expense.title
-%div= @expense.category_i18n
+%div
+  %div.panel.panel-default
+    %div.panel-heading= @expense.title
+    %div.panel-body
+      %h3= @expense.user.name
+      %span.label.label-default= @expense.category_i18n
