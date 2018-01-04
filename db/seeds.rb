@@ -9,7 +9,6 @@ FactoryBot.define do
     name { Faker::Pokemon.name }
     email { Faker::Internet.unique.email }
     password "password"
-    encrypted_password User.new(password: "password").encrypted_password
     company_id { Company.all.to_a.map(&:id).sample }
     admin false
   end
@@ -18,7 +17,6 @@ FactoryBot.define do
     name "risacan"
     email "admin@example.com"
     password "password"
-    encrypted_password User.new(password: "password").encrypted_password
     company_id 1
     admin true
   end
