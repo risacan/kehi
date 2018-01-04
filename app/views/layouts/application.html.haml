@@ -24,7 +24,8 @@
                           %span.label.label-danger admin
                     - else
                       %li= link_to current_user.name, "#"
-                    %li= link_to current_user.company.name, "#"
+                    - if current_user.company
+                      %li= link_to current_user.company.name, "#"
                     %li= link_to "all expenses", expenses_path
                     %li= link_to "edit profile", edit_user_registration_path
                     %li= link_to "log out", destroy_user_session_path, method: :delete
