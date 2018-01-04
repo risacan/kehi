@@ -13,7 +13,7 @@ FactoryBot.define do
     admin false
   end
 
-  factory :admin, class: User do
+  factory :user_admin, class: User do
     name "risacan"
     email "admin@example.com"
     password "password"
@@ -30,5 +30,5 @@ end
 
 FactoryBot.create_list(:company, 5)
 FactoryBot.create_list(:user, 50)
-FactoryBot.create(:admin)
+FactoryBot.create(:user_admin)
 FactoryBot.create_list(:expense, 100)
