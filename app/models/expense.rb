@@ -23,9 +23,9 @@ class Expense < ApplicationRecord
   def status
     if approved_at.nil? && rejected_at.nil?
       return :pending
-    elsif !approved_at.nil? && rejected_at.nil?
+    elsif approved_at.present? && rejected_at.nil?
       return :approved
-    elsif approved_at.nil? && !rejected_at.nil?
+    elsif approved_at.nil? && rejected_at.present?
       return :rejected
     else
       return :error
