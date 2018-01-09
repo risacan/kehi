@@ -29,7 +29,7 @@ class ExpensesController < ApplicationController
 
   def approve
     @expense = Expense.find(params[:id])
-    @expense.approved_at = DateTime.now
+    @expense.approved_at = Time.zone.now
     if @expense.save
       render "show"
     else
@@ -39,7 +39,7 @@ class ExpensesController < ApplicationController
 
   def reject
     @expense = Expense.find(params[:id])
-    @expense.rejected_at = DateTime.now
+    @expense.rejected_at = Time.zone.now
     if @expense.save
       render "show"
     else
