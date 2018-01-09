@@ -21,12 +21,11 @@ class Expense < ApplicationRecord
   }
 
   def status
-    expense = self
-    if expense.approved_at.nil? && expense.rejected_at.nil?
+    if approved_at.nil? && rejected_at.nil?
       return :pending
-    elsif !expense.approved_at.nil? && expense.rejected_at.nil?
+    elsif !approved_at.nil? && rejected_at.nil?
       return :approved
-    elsif expense.approved_at.nil? && !expense.rejected_at.nil?
+    elsif approved_at.nil? && !rejected_at.nil?
       return :rejected
     else
       return :error
