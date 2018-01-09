@@ -27,6 +27,30 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def approve
+    @expense = Expense.find(params[:id])
+    @expense.approved_at = Time.zone.now
+    if @expense.save
+      flash[:success] = "承認しました✅"
+      redirect_to expense_path(@expense)
+    else
+      flash[:success] = "承認できませんでした..."
+      redirect_to expense_path(@expense)
+    end
+  end
+
+  def reject
+    @expense = Expense.find(params[:id])
+    @expense.rejected_at = Time.zone.now
+    if @expense.save
+      flash[:success] = "却下しました✅"
+      redirect_to expense_path(@expense)
+    else
+      flash[:success] = "却下できませんでした..."
+      redirect_to expense_path(@expense)
+    end
+  end
+
   private
 
   def expense_params

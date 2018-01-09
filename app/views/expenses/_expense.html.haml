@@ -1,7 +1,14 @@
-- expenses.each do |expense|
-  %div
-    %div.panel.panel-default
-      %div.panel-heading= link_to expense.title, expense_path(expense.id)
-      %div.panel-body
-        %h3= expense.user.name
-        %span.label.label-default= expense.category_i18n
+%div
+  %div.panel.panel-default
+    %div.panel-heading= link_to expense.title, expense_path(expense.id)
+    %div.panel-body
+      - if expense.status == :pending
+        %h3= "🙂承認待ち🙂"
+      - elsif expense.status == :approved
+        %h3= "😄承認済み😄"
+      - elsif expense.status == :rejected
+        %h3= "😒却下😒"
+      - else
+        %h3= "TODO: 🤔エラーを投げるようにする！"
+      %h3= expense.user.name
+      %span.label.label-default= expense.category_i18n

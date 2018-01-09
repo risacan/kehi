@@ -1,6 +1,5 @@
-%div
-  %div.panel.panel-default
-    %div.panel-heading= @expense.title
-    %div.panel-body
-      %h3= @expense.user.name
-      %span.label.label-default= @expense.category_i18n
+= render "expenses/expense", expense: @expense
+- if current_user.admin?
+  - if @expense.status == :pending
+    = link_to "却下👎", reject_expense_path, class: "btn btn-default", method: :patch
+    = link_to "承認👍", approve_expense_path, class: "btn btn-default", method: :patch
