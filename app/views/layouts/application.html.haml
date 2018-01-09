@@ -33,10 +33,6 @@
                     %li= link_to "sign up", new_user_registration_path
                     %li= link_to "log in", new_user_session_path
         %main.col-sm-9.col-lg-10
-          - if notice
-            %p.alert.alert-success
-              = notice
-          - if alert
-            %p.alert.alert-danger
-              = alert
+          - flash.each do |type, message|
+            %div{class: "alert alert-#{type}"}= message
           = yield
