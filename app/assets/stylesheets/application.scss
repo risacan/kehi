@@ -58,6 +58,7 @@
             padding-top:    10px;
             padding-bottom: 10px;
             border-bottom: 1px solid $navbar-default-border;
+            padding-left: 30px;
           }
         }
       }
@@ -176,6 +177,12 @@
         .dropdown > .dropdown-toggle {
           color: darken($navbar-inverse-color, 15%) !important;
         }
+      }
+
+      .navbar-profile {
+        text-align: center;
+        border-bottom: 1px solid $navbar-default-border;
+        padding: 16px;
       }
     }
   }
