@@ -179,3 +179,43 @@
       }
     }
   }
+
+// _expense
+.expense {
+  color: $gray;
+
+  .gravatar {
+    margin: 16px;
+  }
+
+  .title {
+    margin: 8px 0;
+  }
+
+  .details {
+    .glyphicon:first-child {
+      margin-left: -1px;
+    }
+
+    span {
+      margin: 12px;
+    }
+
+    .price {
+      color: $gray-darker;
+      font-weight: 700;
+    }
+
+    .category {
+      margin: 24px 0;
+      font-size: 16px;
+
+      .label-category {
+        margin-left: 0;
+        border: solid 1px;
+        border-radius: 5em;
+        padding: 12px 16px;
+      }
+    }
+  }
+}

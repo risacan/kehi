@@ -13,3 +13,10 @@ ja:
         category8: 消耗品費
         category9: 福利厚生費
         category10: その他
+  models:
+    expense:
+      status:
+        pending: 未対応
+        approved: 承認済
+        rejected: 却下
+        error: エラー
