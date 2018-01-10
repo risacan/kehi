@@ -80,6 +80,7 @@ GEM
     ffi (1.9.18)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    gravtastic (3.2.6)
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
@@ -240,6 +241,7 @@ DEPENDENCIES
   factory_bot
   factory_bot_rails
   faker
+  gravtastic
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
