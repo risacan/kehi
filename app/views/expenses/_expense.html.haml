@@ -5,19 +5,21 @@
         %div.media-left
           = image_tag current_user.gravatar_url, class: "img-circle gravatar"
         %div.media-body
-          %div.title
-            %h3= link_to expense.title, expense_path(expense.id)
-          %div.details
-            %div
-              %span.glyphicon.glyphicon-user
-                = current_user.name
-              %span.glyphicon.glyphicon-calendar
-                = expense.created_at.strftime("%Y-%m-%d")
-              %span.glyphicon.glyphicon-time
-                = time_ago_in_words(expense.created_at)
-            %div.price
-              %span.glyphicon.glyphicon-yen
-                1000
-              %span.status= I18n.t(expense.status, scope: "models.expense.status")
-            %div.category
-              %span.label-category= expense.category_i18n
+          %div.row
+            %div.details.col-md-8
+              %h3= link_to expense.title, expense_path(expense.id)
+              %p
+                %span.glyphicon.glyphicon-user
+                  = current_user.name
+                %span.glyphicon.glyphicon-calendar
+                  = expense.created_at.strftime("%Y-%m-%d")
+                %span.glyphicon.glyphicon-time
+                  = time_ago_in_words(expense.created_at)
+                %div.category
+                  %span.label-category= expense.category_i18n
+            %div.col-md-4
+              %div.price
+                %span.glyphicon.glyphicon-yen
+                  1000
+                  / #TODO
+              %p.status= I18n.t(expense.status, scope: "models.expense.status")
