@@ -2,6 +2,7 @@ class Expense < ApplicationRecord
   belongs_to :user
   validates :user_id, presence: true
   validates :title, presence: true
+  validates :category, presence: true
   validates :approved_at, absence: true,
     if: Proc.new { |a| a.rejected_at.present? }
   validates :rejected_at, absence: true,
