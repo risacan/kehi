@@ -1,9 +1,10 @@
-%h1 Expenses#new
-%p Find me in app/views/expenses/new.html.haml
-= simple_form_for(@expense) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :title
-    = f.input :category, Expense.categories
-  .form-actions
-    = f.button :submit
+%div.container
+  %div.page-header
+    %h1 新しく経費申請する
+  = simple_form_for(@expense) do |f|
+    = f.error_notification
+    .form-inputs
+      = f.input :title, label: "申請内容"
+      = f.input :category, label: "勘定項目"
+    .form-actions
+      = f.button :submit, "申請する", class: "btn-lg btn-primary"
