@@ -28,5 +28,9 @@ module Kehi
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.time_zone = "Tokyo"
+    config.to_prepare do
+      Devise::SessionsController.layout "devise"
+      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "devise" }
+    end
   end
 end
