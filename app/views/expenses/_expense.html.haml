@@ -10,9 +10,9 @@
               %h3= link_to expense.title, expense_path(expense.id)
               %p
                 %span.glyphicon.glyphicon-user
-                  = current_user.name
+                = current_user.name
                 %span.glyphicon.glyphicon-calendar
-                  = expense.created_at.strftime("%Y-%m-%d")
+                = expense.created_at.strftime("%Y-%m-%d")
                 %span.glyphicon.glyphicon-time
                   = time_ago_in_words(expense.created_at)
                 %div.category
@@ -20,7 +20,7 @@
                   - if current_user.admin?
                     %button.btn.btn-primary.btn-sm
                       %span.glyphicon.glyphicon-pencil
-                        %label コメントを書く
+                      コメントを書く
             %div.col-md-4
               %div.price
                 %span.glyphicon.glyphicon-yen
