@@ -14,7 +14,7 @@
                 %span.glyphicon.glyphicon-calendar
                 = expense.created_at.strftime("%Y-%m-%d")
                 %span.glyphicon.glyphicon-time
-                  = time_ago_in_words(expense.created_at)
+                = "#{time_ago_in_words(expense.created_at)}前"
                 %div.category
                   %span.label-category= expense.category_i18n
                   - if current_user.admin?
