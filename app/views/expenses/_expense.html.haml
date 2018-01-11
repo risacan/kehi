@@ -17,9 +17,13 @@
                   = time_ago_in_words(expense.created_at)
                 %div.category
                   %span.label-category= expense.category_i18n
+                  - if current_user.admin?
+                    %button.btn.btn-primary.btn-sm
+                      %span.glyphicon.glyphicon-pencil
+                        %label コメントを書く
             %div.col-md-4
               %div.price
                 %span.glyphicon.glyphicon-yen
                   1000
                   / #TODO
-              %p.status= I18n.t(expense.status, scope: "models.expense.status")
+                %p.status= I18n.t(expense.status, scope: "models.expense.status")

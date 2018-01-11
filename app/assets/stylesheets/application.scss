@@ -218,10 +218,18 @@
         border-radius: 5em;
         padding: 12px 16px;
       }
+
+      .label-comment {
+        border: solid 1px;
+        border-radius: 5em;
+        padding: 12px 16px;
+      }
     }
   }
 
   .price {
+    // FIXME
+    margin-top: 50px;
     span {
       color: $gray-darker;
       font-size: 24px;
@@ -263,4 +271,10 @@
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+// expsense
+
+div.filters {
+  margin-bottom: 20px;
 }
