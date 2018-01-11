@@ -191,6 +191,10 @@
 .expense {
   color: $gray;
 
+  .panel {
+    border-left: solid 5px $gray-lighter;
+  }
+
   .gravatar {
     margin: 16px;
   }
@@ -234,6 +238,39 @@
       color: $gray-darker;
       font-size: 24px;
       font-weight: 700;
+    }
+  }
+}
+
+.expense-pending{
+  .price {
+    span {
+      color: $gray-light;
+    }
+  }
+}
+
+.expense-approved {
+  .panel {
+    border-left-color: $brand-success;
+  }
+
+  .price {
+    span {
+      color: $brand-success;
+    }
+  }
+}
+
+.expense-rejected {
+  .panel {
+    border-left-color: $brand-danger;
+  }
+
+  .price {
+    span {
+      color: $gray-lighter;
+      text-decoration: line-through;
     }
   }
 }
