@@ -7,4 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   validates_associated :company
   validates :name, presence: true
+  include Gravtastic
+    gravtastic
 end

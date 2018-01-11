@@ -13,26 +13,29 @@
           %nav.navbar.navbar-default.navbar-fixed-side
             %div.container
               %div.navbar-header
-                %ul.nav.navbar-nav
-                  %li= link_to "KEHI", root_url, class: "navbar-brand"
-                  %div.collapse.navbar-collapse
-                  - if user_signed_in?
-                    - if current_user.admin
-                      %li
-                        = link_to "#" do
-                          = current_user.name
-                          %span.label.label-danger admin
-                    - else
-                      %li= link_to current_user.name, "#"
+                %div= link_to "KEHI", root_url, class: "navbar-brand"
+              %ul.nav.navbar-nav
+                - if user_signed_in?
+                  %div.collapse.navbar-collapse.navbar-profile
+                    = link_to edit_user_registration_path do
+                      = image_tag current_user.gravatar_url, class: "img-circle gravatar centered"
+                    %div
+                      = link_to edit_user_registration_path do
+                        = current_user.name
+                      - if current_user.admin
+                        %span.label.label-info admin
                     - if current_user.company
-                      %li= link_to current_user.company.name, "#"
-                    %li= link_to "all expenses", expenses_path
-                    %li= link_to "edit profile", edit_user_registration_path
-                    %li= link_to "log out", destroy_user_session_path, method: :delete
-                  - else
-                    %li= link_to "sign up", new_user_registration_path
-                    %li= link_to "log in", new_user_session_path
+                      %span= current_user.company.name
+                  %li= link_to "ホーム", root_url
+                  %li= link_to "経費申請する", new_expense_path
+                  %li= link_to "経費一覧", expenses_path
+                  %li= link_to "プロフィール", edit_user_registration_path
+                  %li= link_to "ログアウト", destroy_user_session_path, method: :delete
+                - else
+                  %li= link_to "サインアップ", new_user_registration_path
+                  %li= link_to "ログイン", new_user_session_path
         %main.col-sm-9.col-lg-10
-          - flash.each do |type, message|
-            %div{class: "alert alert-#{type}"}= message
-          = yield
+          .container
+            - flash.each do |type, message|
+              %div{class: "alert alert-#{type}"}= message
+            = yield
