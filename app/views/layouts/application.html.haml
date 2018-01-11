@@ -23,7 +23,7 @@
                       = link_to edit_user_registration_path do
                         = current_user.name
                       - if current_user.admin
-                        %span.label.label-danger admin
+                        %span.label.label-info admin
                     - if current_user.company
                       %span= current_user.company.name
                   %li= link_to "ホーム", root_url
