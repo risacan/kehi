@@ -1,10 +1,16 @@
 %div.container
   %div.page-header
     %h1 新しく経費申請する
-  = simple_form_for(@expense) do |f|
-    = f.error_notification
-    .form-inputs
-      = f.input :title, label: "申請内容"
-      = f.input :category, label: "勘定項目"
-    .form-actions
-      = f.button :submit, "申請する", class: "btn-lg btn-primary"
+  %div.col-md-5
+    = simple_form_for(@expense) do |f|
+      = f.error_notification
+      .form-inputs
+        = f.input :title, label: "申請内容"
+        %div
+          = f.input :id, label: "TODO 実装する 目的"
+          = f.input :id, label: "TODO 金額"
+          = f.input :created_at, label: "TODO 実装する 支払い日付"
+          = f.input :id, label: "TODO 実装する 支払先"
+        = f.input :category, label: "勘定項目"
+      .form-actions
+        = f.button :submit, "申請する", class: "btn-lg btn-primary"
