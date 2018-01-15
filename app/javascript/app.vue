@@ -12,6 +12,12 @@
     methods: {
       edit() {
         console.log("hoge")
+      },
+      setExpenseId(id) {
+        axios.get(`api/expenses/${id}.json`)
+        .then(res => {
+          this.expenseInfo = res.data;
+        });
       }
     }
   }
