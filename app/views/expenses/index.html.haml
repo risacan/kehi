@@ -16,3 +16,4 @@
             =link_to user.name, "#"
 - @expenses.each do |expense|
   = render "expenses/expense", expense: expense
+= paginate @expenses

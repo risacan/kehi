@@ -21,9 +21,9 @@ class ExpensesController < ApplicationController
 
   def index
     if current_user.admin?
-      @expenses = current_user.company.expenses.order(created_at: :desc)
+      @expenses = current_user.company.expenses.order(created_at: :desc).page params[:page]
     else
-      @expenses = current_user.expenses.order(created_at: :desc)
+      @expenses = current_user.expenses.order(created_at: :desc).page params[:page]
     end
   end
 
