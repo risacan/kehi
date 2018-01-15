@@ -192,7 +192,7 @@
   color: $gray;
 
   .panel {
-    border-left: solid 5px $gray-lighter;
+    border-left: solid 5px $gray-light;
   }
 
   .gravatar {
@@ -258,6 +258,31 @@
   .price {
     span {
       color: $brand-success;
+    }
+  }
+}
+
+.expense-retrieved {
+  // FIXME
+  color: $gray-lighter;
+
+  .panel {
+    a {
+      color: $gray-lighter;
+      text-decoration: line-through;
+    }
+    border-left-color: $gray-lighter;
+  }
+  .details {
+    .title {
+      text-decoration: line-through;
+    }
+  }
+
+  .price{
+    span {
+      color: $gray-lighter;
+      text-decoration: line-through;
     }
   }
 }

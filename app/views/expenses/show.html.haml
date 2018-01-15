@@ -3,3 +3,6 @@
   - if @expense.status == :pending
     = link_to "却下👎", reject_expense_path, class: "btn btn-default", method: :patch
     = link_to "承認👍", approve_expense_path, class: "btn btn-default", method: :patch
+- else
+  - if @expense.status == :pending
+    = link_to "取り消し🔙", reject_expense_path, class:"btn btn-default", method: :patch

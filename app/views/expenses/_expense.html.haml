@@ -8,9 +8,12 @@
           %div.row
             %div.details.col-md-8
               %h3= link_to expense.title, expense_path(expense.id)
+              %p= expense.purpose
+              %p
+                = "#{expense.paid_at.strftime("%Y年%m月%d日")}に#{expense.paid_to}に支払われました。"
               %p
                 %span.glyphicon.glyphicon-user
-                = current_user.name
+                = expense.user.name
                 %span.glyphicon.glyphicon-calendar
                 = expense.created_at.strftime("%Y-%m-%d")
                 %span.glyphicon.glyphicon-time
@@ -24,6 +27,5 @@
             %div.col-md-4
               %div.price
                 %span.glyphicon.glyphicon-yen
-                  1000
-                  / #TODO
-                %p.status= I18n.t(expense.status, scope: "models.expense.status")
+                  = expense.amount
+                %p.status= "#{I18n.t(expense.status, scope: "models.expense.status")}"

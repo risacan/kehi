@@ -8,7 +8,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.new(expense_params)
     @expense.user = current_user
     if @expense.save
-      redirect_to root_url
+      redirect_to expense_path(@expense)
     else
       render "new"
     end
@@ -30,11 +30,12 @@ class ExpensesController < ApplicationController
   def approve
     @expense = Expense.find(params[:id])
     @expense.approved_at = Time.zone.now
+    @expense.confirmed_by = current_user.id
     if @expense.save
-      flash[:success] = "承認しました✅"
+      flash[:success] = "#{I18n.t(@expense.status, scope: "models.expense.status")}しました✅"
       redirect_to expense_path(@expense)
     else
-      flash[:success] = "承認できませんでした..."
+      flash[:success] = "#{I18n.t(@expense.status, scope: "models.expense.status")}できませんでした..."
       redirect_to expense_path(@expense)
     end
   end
@@ -42,11 +43,12 @@ class ExpensesController < ApplicationController
   def reject
     @expense = Expense.find(params[:id])
     @expense.rejected_at = Time.zone.now
+    @expense.confirmed_by = current_user.id
     if @expense.save
-      flash[:success] = "却下しました✅"
+      flash[:success] = "#{I18n.t(@expense.status, scope: "models.expense.status")}しました✅"
       redirect_to expense_path(@expense)
     else
-      flash[:success] = "却下できませんでした..."
+      flash[:success] = "#{I18n.t(@expense.status, scope: "models.expense.status")}できませんでした..."
       redirect_to expense_path(@expense)
     end
   end
@@ -54,7 +56,7 @@ class ExpensesController < ApplicationController
   private
 
   def expense_params
-    params.require(:expense).permit(:title, :category)
+    params.require(:expense).permit(:title, :category, :paid_at, :paid_to, :amount, :purpose)
   end
 
   def authorized?

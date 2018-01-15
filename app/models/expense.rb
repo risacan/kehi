@@ -2,6 +2,9 @@ class Expense < ApplicationRecord
   belongs_to :user
   validates :user_id, presence: true
   validates :title, presence: true
+  validates :paid_at, presence: true
+  validates :paid_to, presence: true
+  validates :amount, presence: true
   validates :category, presence: true
   validates :approved_at, absence: true,
     if: Proc.new { |a| a.rejected_at.present? }
@@ -26,7 +29,9 @@ class Expense < ApplicationRecord
       return :pending
     elsif approved_at.present? && rejected_at.nil?
       return :approved
-    elsif approved_at.nil? && rejected_at.present?
+    elsif approved_at.nil? && rejected_at.present? && (confirmed_by == user_id)
+      return :retrieved
+    elsif approved_at.nil? && rejected_at.present? && (confirmed_by != user_id)
       return :rejected
     else
       return :error
