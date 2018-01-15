@@ -17,7 +17,7 @@ ja:
     expense:
       status:
         pending: 未対応
-        approved: 承認済
+        approved: 承認
         rejected: 却下
-        retrieved: 取り消し済み
+        retrieved: 取り消し
         error: エラー

@@ -32,10 +32,10 @@ class ExpensesController < ApplicationController
     @expense.approved_at = Time.zone.now
     @expense.confirmed_by = current_user.id
     if @expense.save
-      flash[:success] = "承認しました✅"
+      flash[:success] = "#{I18n.t(@expense.status, scope: "models.expense.status")}しました✅"
       redirect_to expense_path(@expense)
     else
-      flash[:success] = "承認できませんでした..."
+      flash[:success] = "#{I18n.t(@expense.status, scope: "models.expense.status")}できませんでした..."
       redirect_to expense_path(@expense)
     end
   end
@@ -45,10 +45,10 @@ class ExpensesController < ApplicationController
     @expense.rejected_at = Time.zone.now
     @expense.confirmed_by = current_user.id
     if @expense.save
-      flash[:success] = "却下しました✅"
+      flash[:success] = "#{I18n.t(@expense.status, scope: "models.expense.status")}しました✅"
       redirect_to expense_path(@expense)
     else
-      flash[:success] = "却下できませんでした..."
+      flash[:success] = "#{I18n.t(@expense.status, scope: "models.expense.status")}できませんでした..."
       redirect_to expense_path(@expense)
     end
   end
