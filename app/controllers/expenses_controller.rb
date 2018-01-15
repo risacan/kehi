@@ -8,7 +8,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.new(expense_params)
     @expense.user = current_user
     if @expense.save
-      redirect_to root_url
+      redirect_to expense_path(@expense)
     else
       render "new"
     end
@@ -56,7 +56,7 @@ class ExpensesController < ApplicationController
   private
 
   def expense_params
-    params.require(:expense).permit(:title, :category, :paid_at, :paid_to, :amount)
+    params.require(:expense).permit(:title, :category, :paid_at, :paid_to, :amount, :purpose)
   end
 
   def authorized?
