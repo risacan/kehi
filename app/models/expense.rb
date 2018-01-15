@@ -1,4 +1,5 @@
 class Expense < ApplicationRecord
+  paginates_per 10
   belongs_to :user
   validates :user_id, presence: true
   validates :title, presence: true
