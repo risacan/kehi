@@ -8,6 +8,7 @@
           %div.row
             %div.details.col-md-8
               %h3= link_to expense.title, expense_path(expense.id)
+              %p= expense.purpose
               %p
                 = "#{expense.paid_at.strftime("%Y年%m月%d日")}に#{expense.paid_to}に支払われました。"
               %p
