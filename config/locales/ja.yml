@@ -19,4 +19,5 @@ ja:
         pending: 未対応
         approved: 承認済
         rejected: 却下
+        retrieved: 取り消し済み
         error: エラー

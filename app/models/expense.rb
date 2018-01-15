@@ -26,7 +26,9 @@ class Expense < ApplicationRecord
       return :pending
     elsif approved_at.present? && rejected_at.nil?
       return :approved
-    elsif approved_at.nil? && rejected_at.present?
+    elsif approved_at.nil? && rejected_at.present? && (confirmed_by == user_id)
+      return :retrieved
+    elsif approved_at.nil? && rejected_at.present? && (confirmed_by != user_id)
       return :rejected
     else
       return :error
