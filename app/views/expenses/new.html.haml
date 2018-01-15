@@ -7,10 +7,9 @@
       .form-inputs
         = f.input :title, label: "申請内容"
         = f.input :purpose, label: "目的"
-        %div
-          = f.input :paid_at, label: "支払い日"
-          = f.input :paid_to, label: "支払先"
-          = f.input :amount, label: "金額"
-          = f.input :category, label: "勘定項目"
+        = f.input :paid_at, label: "支払い日", as: :date
+        = f.input :paid_to, label: "支払先"
+        = f.input :amount, label: "金額"
+        = f.input :category, label: "勘定項目"
       .form-actions
         = f.button :submit, "申請する", class: "btn-lg btn-primary"
