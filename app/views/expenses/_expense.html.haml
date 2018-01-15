@@ -9,6 +9,8 @@
             %div.details.col-md-8
               %h3= link_to expense.title, expense_path(expense.id)
               %p
+                = "#{expense.paid_at.strftime("%Y年%m月%d日")}に#{expense.paid_to}に支払われました。"
+              %p
                 %span.glyphicon.glyphicon-user
                 = expense.user.name
                 %span.glyphicon.glyphicon-calendar
@@ -24,6 +26,5 @@
             %div.col-md-4
               %div.price
                 %span.glyphicon.glyphicon-yen
-                  1000
-                  / #TODO
+                  = expense.amount
                 %p.status= "#{I18n.t(expense.status, scope: "models.expense.status")}済"
