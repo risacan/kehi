@@ -10,7 +10,7 @@
               %h3= link_to expense.title, expense_path(expense.id)
               %p
                 %span.glyphicon.glyphicon-user
-                = current_user.name
+                = expense.user.name
                 %span.glyphicon.glyphicon-calendar
                 = expense.created_at.strftime("%Y-%m-%d")
                 %span.glyphicon.glyphicon-time
