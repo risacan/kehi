@@ -24,8 +24,11 @@
                     %button.btn.btn-primary.btn-sm
                       %span.glyphicon.glyphicon-pencil
                       コメントを書く
+                    %div.hello
+                      %button{"v-on:click": "test"}
             %div.col-md-4
               %div.price
                 %span.glyphicon.glyphicon-yen
                   = expense.amount
                 %p.status= "#{I18n.t(expense.status, scope: "models.expense.status")}"
+= javascript_pack_tag 'hello_vue'

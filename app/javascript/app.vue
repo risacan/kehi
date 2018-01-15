@@ -1,22 +1,18 @@
 <template>
-  <div id="app">
-    <p>{{ message }}</p>
+  <div>
+    <button @click="edit">click me</button>
   </div>
 </template>
 
 <script>
-export default {
-  data: function () {
-    return {
-      message: "Hello Vue!"
+  export default {
+    data() {
+      return {}
+    },
+    methods: {
+      edit() {
+        console.log("hoge")
+      }
     }
   }
-}
 </script>
-
-<style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
-</style>
