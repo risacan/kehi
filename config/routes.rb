@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   end
   root 'pages#index'
   get 'pages/show'
+  namespace :api do
+    resources :expenses, only: :show
+  end
 end
