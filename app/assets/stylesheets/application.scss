@@ -263,7 +263,14 @@
 }
 
 .expense-retrieved {
+  // FIXME
+  color: $gray-lighter;
+
   .panel {
+    a {
+      color: $gray-lighter;
+      text-decoration: line-through;
+    }
     border-left-color: $gray-lighter;
   }
   .details {
