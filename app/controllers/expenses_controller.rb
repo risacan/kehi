@@ -25,16 +25,8 @@ class ExpensesController < ApplicationController
     else
       @expenses = current_user.expenses.order(created_at: :desc).page params[:page]
     end
-    case params[:status]
-    when "approved"
-      @expenses = @expenses.approved.page params[:page]
-    when "rejected"
-      @expenses = @expenses.rejected.page params[:page]
-    when "pending"
-      @expenses = @expenses.pending.page params[:page]
-    end
-    if params[:user]
-      @expenses = @expenses.user(params[:user]).page params[:page]
+    filtering_params(params).each do |key, value|
+      @expenses = @expenses.public_send(key, value) if value.present?
     end
     render "index"
   end
@@ -85,5 +77,9 @@ class ExpensesController < ApplicationController
 
   def same_company?
     @expense.user.company == current_user.company
+  end
+
+  def filtering_params(params)
+    params.slice(:status, :user)
   end
 end

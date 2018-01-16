@@ -28,6 +28,9 @@ class Expense < ApplicationRecord
   scope :rejected, -> { where.not(rejected_at: nil)}
   scope :pending, -> { where(approved_at: nil, rejected_at: nil)}
   scope :user, -> (user) { where("user_id = ?", user) }
+  def self.status(status)
+    public_send(status)
+  end
 
   def status
     if approved_at.nil? && rejected_at.nil?
