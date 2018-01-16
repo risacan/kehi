@@ -6,8 +6,10 @@
     %span #{current_user.company.expenses.approved.sum(:amount)}円
     %h2 未承認の経費合計額
     %span #{current_user.company.expenses.pending.sum(:amount)}円
-    %h2 カテゴリー比率
-    = pie_chart current_user.company.expenses.group(:category).sum(:amount)
+    %h2 カテゴリーごとの経費提出数
+    = column_chart @count_by_category
+    %h2 カテゴリーごとの承認済み経費
+    = pie_chart @pie_chart
 %div.page-header
   %h2 NEW 経費
 = link_to "新たに経費精算！", new_expense_path, class: "btn btn-default btn-lg"
