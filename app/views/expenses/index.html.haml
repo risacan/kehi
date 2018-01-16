@@ -17,4 +17,4 @@
     %button.btn.btn-sm= link_to "取り消し済", controller: "expenses", action: "index", status: :rejected
 - @expenses.each do |expense|
   = render "expenses/expense", expense: expense
-= paginate @expenses
+= paginate @expenses.page(params[:page])

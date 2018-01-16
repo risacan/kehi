@@ -21,9 +21,9 @@ class ExpensesController < ApplicationController
 
   def index
     if current_user.admin?
-      @expenses = current_user.company.expenses.order(created_at: :desc).page params[:page]
+      @expenses = current_user.company.expenses.order(created_at: :desc)
     else
-      @expenses = current_user.expenses.order(created_at: :desc).page params[:page]
+      @expenses = current_user.expenses.order(created_at: :desc)
     end
     filtering_params(params).each do |key, value|
       @expenses = @expenses.public_send(key, value) if value.present?
