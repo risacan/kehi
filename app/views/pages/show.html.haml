@@ -1,2 +1,12 @@
-%h1 Pages#show
-%p Find me in app/views/pages/show.html.erb
+- if current_user.admin?
+  %div.page-header
+    %h1 #{Time.zone.now.strftime("%Y年%m月")}の経費まとめ
+  %div
+    %h2 💸承認済みの経費合計額
+    %span #{current_user.company.expenses.this_month.approved.sum(:amount)}円
+    %h2 未承認の経費合計額
+    %span #{current_user.company.expenses.this_month.pending.sum(:amount)}円
+    %h2 カテゴリーごとの経費提出数
+    = column_chart @count_by_category
+    %h2 カテゴリーごとの承認済み経費
+    = pie_chart @pie_chart
