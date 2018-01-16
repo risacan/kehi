@@ -3,8 +3,8 @@
 %div.filters
   %button.btn.btn-sm= link_to "未対応", controller: "expenses", action: "index", status: :pending
   %button.btn.btn-sm= link_to "承認済", controller: "expenses", action: "index", status: :approved
-  %button.btn.btn-sm= link_to "却下済", controller: "expenses", action: "index", status: :rejected
   - if current_user.admin?
+    %button.btn.btn-sm= link_to "却下済", controller: "expenses", action: "index", status: :rejected
     %span.dropdown
       %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#", class: "btn btn-primary btn-sm"}
         人物でフィルター
@@ -13,6 +13,8 @@
         - current_user.company.users.each do |user|
           %li
             =link_to user.name, controller: "expenses", action: "index", user: user
+  - else
+    %button.btn.btn-sm= link_to "取り消し済", controller: "expenses", action: "index", status: :rejected
 - @expenses.each do |expense|
   = render "expenses/expense", expense: expense
 = paginate @expenses
