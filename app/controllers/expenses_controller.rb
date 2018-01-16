@@ -25,7 +25,7 @@ class ExpensesController < ApplicationController
     else
       @expenses = current_user.expenses.order(created_at: :desc).page params[:page]
     end
-    case params[:filter]
+    case params[:status]
     when "approved"
       @expenses = @expenses.approved.page params[:page]
     when "rejected"

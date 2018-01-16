@@ -1,9 +1,9 @@
 %div.page-header
   %h1 ALL 経費
 %div.filters
-  %button.btn.btn-sm= link_to "未対応", controller: "expenses", action: "index", filter: :pending
-  %button.btn.btn-sm= link_to "承認済", controller: "expenses", action: "index", filter: :approved
-  %button.btn.btn-sm= link_to "却下済", controller: "expenses", action: "index", filter: :rejected
+  %button.btn.btn-sm= link_to "未対応", controller: "expenses", action: "index", status: :pending
+  %button.btn.btn-sm= link_to "承認済", controller: "expenses", action: "index", status: :approved
+  %button.btn.btn-sm= link_to "却下済", controller: "expenses", action: "index", status: :rejected
   - if current_user.admin?
     %span.dropdown
       %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#", class: "btn btn-primary btn-sm"}
