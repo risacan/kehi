@@ -25,6 +25,15 @@ class ExpensesController < ApplicationController
     else
       @expenses = current_user.expenses.order(created_at: :desc).page params[:page]
     end
+    case params[:filter]
+    when "approved"
+      @expenses = @expenses.approved.page params[:page]
+    when "rejected"
+      @expenses = @expenses.rejected.page params[:page]
+    when "pending"
+      @expenses = @expenses.pending.page params[:page]
+    end
+    render "index"
   end
 
   def approve
