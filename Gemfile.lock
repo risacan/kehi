@@ -59,6 +59,7 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.1.0)
+    chartkick (2.2.5)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crass (1.0.3)
@@ -81,6 +82,8 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     gravtastic (3.2.6)
+    groupdate (3.2.0)
+      activesupport (>= 3)
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
@@ -247,6 +250,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   byebug
+  chartkick
   devise!
   enum_help
   erb2haml
@@ -254,6 +258,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   gravtastic
+  groupdate
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
