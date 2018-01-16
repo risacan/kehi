@@ -2,8 +2,10 @@
   %div.page-header
     %h1 今月の経費まとめ
   %div
-    %h1 TODO
-    経費の月ごとの情報を表示する
+    %h2 💸承認済みの経費合計額
+    %span #{current_user.company.expenses.approved.sum(:amount)}円
+    %h2 未承認の経費合計額
+    %span #{current_user.company.expenses.pending.sum(:amount)}円
 %div.page-header
   %h2 NEW 経費
 = link_to "新たに経費精算！", new_expense_path, class: "btn btn-default btn-lg"
