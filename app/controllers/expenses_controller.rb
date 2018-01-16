@@ -38,7 +38,7 @@ class ExpensesController < ApplicationController
     if params[:user]
       @expenses = @expenses.user(params[:user])
     end
-    render "index"
+    @expenses = @expenses.page(params[:page])
   end
 
   def approve

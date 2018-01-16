@@ -16,4 +16,4 @@
             =link_to user.name, controller: "expenses", action: "index", user: user
 - @expenses.each do |expense|
   = render "expenses/expense", expense: expense
-= paginate @expenses.page(params[:page])
+= paginate @expenses
