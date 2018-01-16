@@ -14,8 +14,6 @@
         - current_user.company.users.each do |user|
           %li
             =link_to user.name, controller: "expenses", action: "index", user: user
-  - else
-    %button.btn.btn-sm= link_to "取り消し済", controller: "expenses", action: "index", status: :rejected
 - @expenses.each do |expense|
   = render "expenses/expense", expense: expense
 = paginate @expenses.page(params[:page])
