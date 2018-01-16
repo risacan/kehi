@@ -12,7 +12,7 @@
       %ul.dropdown-menu{"role" => "menu"}
         - current_user.company.users.each do |user|
           %li
-            =link_to user.name, "#"
+            =link_to user.name, controller: "expenses", action: "index", user: user
 - @expenses.each do |expense|
   = render "expenses/expense", expense: expense
 = paginate @expenses

@@ -33,6 +33,9 @@ class ExpensesController < ApplicationController
     when "pending"
       @expenses = @expenses.pending.page params[:page]
     end
+    if params[:user]
+      @expenses = @expenses.user(params[:user]).page params[:page]
+    end
     render "index"
   end
 
