@@ -6,5 +6,6 @@ FactoryBot.define do
     paid_to { Faker::Company.name }
     amount { Faker::Commerce.price * 100 }
     category { Expense.categories.values.sample }
+    created_at { Faker::Date.backward }
   end
 end
