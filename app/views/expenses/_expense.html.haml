@@ -20,12 +20,15 @@
                 = "#{time_ago_in_words(expense.created_at)}前"
                 %div.category
                   %span.label-category= expense.category_i18n
-                  - if current_user.admin?
-                    %button.btn.btn-primary.btn-sm
-                      %span.glyphicon.glyphicon-pencil
-                      コメントを書く
             %div.col-md-4
               %div.price
                 %span.glyphicon.glyphicon-yen
                   = expense.amount
                 %p.status= "#{I18n.t(expense.status, scope: "models.expense.status")}"
+          - if current_user.admin?
+            %div.comment
+              - if expense.comment.nil?
+                コメントを書く
+              - else
+                = expense.comment
+              =link_to "✍", edit_expense_path(expense), class: "btn btn-default"

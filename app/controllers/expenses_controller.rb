@@ -67,10 +67,24 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def edit
+    @expense = Expense.find(params[:id])
+    redirect_to root_url unless authorized?
+  end
+
+  def update
+    @expense = Expense.find(params[:id])
+    if @expense.update_attributes(expense_params)
+      redirect_to expense_path(@expense)
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def expense_params
-    params.require(:expense).permit(:title, :category, :paid_at, :paid_to, :amount, :purpose)
+    params.require(:expense).permit(:title, :category, :paid_at, :paid_to, :amount, :purpose, :comment)
   end
 
   def authorized?

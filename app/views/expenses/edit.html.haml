@@ -1,0 +1,10 @@
+%div.page-header
+  %h1 コメントする
+= render "expenses/expense", expense: @expense
+%div.col-md-5
+  = simple_form_for(@expense) do |f|
+    = f.error_notification
+    .form-inputs
+      = f.input :comment, label: "コメント"
+    .form-actions
+      = f.button :submit, "コメントする", class: "btn-lg btn-primary"
