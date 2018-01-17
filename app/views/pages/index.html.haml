@@ -21,10 +21,10 @@
         %div.row
           %div.col-lg-6
             %h2 📊 カテゴリ別申請額合計
-            = pie_chart @amount_by_category
+            = pie_chart @amount_by_category.transform_keys{ |k| I18n.t(k, scope: "enums.expense.category") }
           %div.col-lg-6
             %h2 📊 カテゴリ別申請数
-            = column_chart @number_of_category
+            = column_chart @number_of_category.transform_keys{ |k| I18n.t(k, scope: "enums.expense.category") }
 %div.page-header
   %h2 NEW 経費
 = link_to "新たに経費精算！", new_expense_path, class: "btn btn-default btn-lg"
