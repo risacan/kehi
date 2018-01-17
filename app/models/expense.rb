@@ -24,6 +24,11 @@ class Expense < ApplicationRecord
     category9: 9,
     category10: 10
   }
+  scope :approved, -> { where.not(approved_at: nil) }
+  scope :rejected, -> { where.not(rejected_at: nil).where("confirmed_by != user_id") }
+  scope :retrieved, -> { where.not(rejected_at: nil).where("confirmed_by = user_id") }
+  scope :pending, -> { where(approved_at: nil, rejected_at: nil)}
+  scope :user, -> (user) { where("user_id = ?", user) }
 
   def status
     if approved_at.nil? && rejected_at.nil?

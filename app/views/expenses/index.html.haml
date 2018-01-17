@@ -1,10 +1,11 @@
 %div.page-header
   %h1 ALL 経費
 %div.filters
-  TODO フィルターを実装する
-  %button.btn.btn-primary.btn-sm= "未対応"
-  %button.btn.btn-primary.btn-sm= "承認済"
-  %button.btn.btn-primary.btn-sm= "却下済"
+  %button.btn.btn-sm= link_to "すべて", controller: "expenses", action: "index"
+  %button.btn.btn-sm= link_to "未対応", controller: "expenses", action: "index", status: :pending
+  %button.btn.btn-sm= link_to "承認済", controller: "expenses", action: "index", status: :approved
+  %button.btn.btn-sm= link_to "却下済", controller: "expenses", action: "index", status: :rejected
+  %button.btn.btn-sm= link_to "取り消し済", controller: "expenses", action: "index", status: :retrieved
   - if current_user.admin?
     %span.dropdown
       %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#", class: "btn btn-primary btn-sm"}
@@ -13,7 +14,7 @@
       %ul.dropdown-menu{"role" => "menu"}
         - current_user.company.users.each do |user|
           %li
-            =link_to user.name, "#"
+            =link_to user.name, controller: "expenses", action: "index", user: user
 - @expenses.each do |expense|
   = render "expenses/expense", expense: expense
 = paginate @expenses

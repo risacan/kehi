@@ -21,10 +21,24 @@ class ExpensesController < ApplicationController
 
   def index
     if current_user.admin?
-      @expenses = current_user.company.expenses.order(created_at: :desc).page params[:page]
+      @expenses = current_user.company.expenses.order(created_at: :desc)
     else
-      @expenses = current_user.expenses.order(created_at: :desc).page params[:page]
+      @expenses = current_user.expenses.order(created_at: :desc)
     end
+    case params[:status]
+    when "approved"
+      @expenses = @expenses.approved
+    when "rejected"
+      @expenses = @expenses.rejected
+    when "retrieved"
+      @expenses = @expenses.retrieved
+    when "pending"
+      @expenses = @expenses.pending
+    end
+    if params[:user]
+      @expenses = @expenses.user(params[:user])
+    end
+    @expenses = @expenses.page(params[:page])
   end
 
   def approve
