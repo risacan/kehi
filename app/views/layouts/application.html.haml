@@ -28,6 +28,8 @@
                     - if current_user.company
                       %span= current_user.company.name
                   %li= link_to "ホーム", root_url
+                  - if current_user.admin?
+                    %li= link_to "今月の経費情報", pages_show_path
                   %li= link_to "経費申請する", new_expense_path
                   %li= link_to "経費一覧", expenses_path
                   %li= link_to "プロフィール", edit_user_registration_path
