@@ -28,5 +28,5 @@
             %div.col-md-4
               %div.price
                 %span.glyphicon.glyphicon-yen
-                  = expense.amount
+                  = number_with_delimiter(expense.amount, delimiter: ",")
                 %p.status= "#{I18n.t(expense.status, scope: "models.expense.status")}"
