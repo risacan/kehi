@@ -27,8 +27,4 @@
                 %p.status= "#{I18n.t(expense.status, scope: "models.expense.status")}"
           - if current_user.admin?
             %div.comment
-              - if expense.comment.nil?
-                コメントを書く
-              - else
-                = expense.comment
-              =link_to "✍", edit_expense_path(expense), class: "btn btn-default"
+              =link_to "承認・却下する", edit_expense_path(expense), class: "btn btn-default"

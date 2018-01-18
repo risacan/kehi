@@ -41,40 +41,20 @@ class ExpensesController < ApplicationController
     @expenses = @expenses.page(params[:page])
   end
 
-  def approve
-    @expense = Expense.find(params[:id])
-    @expense.approved_at = Time.zone.now
-    @expense.confirmed_by = current_user.id
-    if @expense.save
-      flash[:success] = "#{I18n.t(@expense.status, scope: "models.expense.status")}しました✅"
-      redirect_to expense_path(@expense)
-    else
-      flash[:success] = "#{I18n.t(@expense.status, scope: "models.expense.status")}できませんでした..."
-      redirect_to expense_path(@expense)
-    end
-  end
-
-  def reject
-    @expense = Expense.find(params[:id])
-    @expense.rejected_at = Time.zone.now
-    @expense.confirmed_by = current_user.id
-    if @expense.save
-      flash[:success] = "#{I18n.t(@expense.status, scope: "models.expense.status")}しました✅"
-      redirect_to expense_path(@expense)
-    else
-      flash[:success] = "#{I18n.t(@expense.status, scope: "models.expense.status")}できませんでした..."
-      redirect_to expense_path(@expense)
-    end
-  end
-
   def edit
     @expense = Expense.find(params[:id])
     redirect_to root_url unless authorized?
   end
 
   def update
+    attributes = {
+      rejected_at: params[:expense][:status] == "reject" ? Time.zone.now : nil,
+      approved_at: params[:expense][:status] == "approve" ? Time.zone.now : nil,
+      comment: params[:expense][:comment],
+      confirmed_by: current_user.id
+    }
     @expense = Expense.find(params[:id])
-    if @expense.update_attributes(expense_params)
+    if @expense.update(attributes)
       redirect_to expense_path(@expense)
     else
       render 'edit'
