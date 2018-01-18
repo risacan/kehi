@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def index
     @expenses = current_user.expenses.order(created_at: :desc).first(5)
+    @company_expenses = company_expenses
     @amount_by_category = amount_by_category
     @number_of_category = number_of_category
   end
@@ -23,5 +24,9 @@ class PagesController < ApplicationController
 
   def number_of_category
     current_user.company.number_of_category
+  end
+
+  def company_expenses
+    current_user.company.expenses
   end
 end
