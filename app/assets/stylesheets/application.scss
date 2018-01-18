@@ -403,3 +403,11 @@ div.filters {
     padding: 0;
   }
 }
+
+// pagination
+.pagination {
+  .disabled {
+    pointer-events: none;
+    color: $gray-lighter;
+  }
+}
