@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  layout "devise"
   skip_before_action :ensure_belongs_to_company
 
   def new
