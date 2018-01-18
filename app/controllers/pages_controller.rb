@@ -6,7 +6,6 @@ class PagesController < ApplicationController
   end
 
   def show
-    @expenses = current_user.expenses.order(created_at: :desc).first(5)
     @amount_by_category = amount_by_category
     @amount_by_category_last_month = amount_by_category_last_month
     @number_of_category = number_of_category
