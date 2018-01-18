@@ -368,7 +368,7 @@ div.js-expense-panel {
     width: 80px;
   }
 
-  .faceicon img{
+  img{
     width: 100%;
     height: auto;
     border: solid 3px #d7ebfe;
@@ -381,12 +381,12 @@ div.js-expense-panel {
 }
 
 .says {
-    display: inline-block;
-    position: relative;
-    margin: 5px 0 0 105px;
-    padding: 17px 13px;
-    border-radius: 12px;
-    background: #d7ebfe;
+  display: inline-block;
+  position: relative;
+  margin: 5px 0 0 105px;
+  padding: 17px 13px;
+  border-radius: 12px;
+  background: #d7ebfe;
 
   &:after {
     content: "";
