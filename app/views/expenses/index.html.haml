@@ -23,7 +23,7 @@
               =link_to user.name, controller: "expenses", action: "index", user: user
 - @expenses.each do |expense|
   - if expense.status == :pending
-    = render "expenses/expense", expense: expense, url: edit_expense_path(expense)
+    = render "expenses/expense_list", expense: expense, url: edit_expense_path(expense)
   - else
-    = render "expenses/expense", expense: expense, url: expense_path(expense)
+    = render "expenses/expense_list", expense: expense, url: expense_path(expense)
 = paginate @expenses
