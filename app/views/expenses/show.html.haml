@@ -1,8 +1,8 @@
 = render "expenses/expense", expense: @expense
-- if current_user.admin?
-  - if @expense.status == :pending
-    = link_to "却下👎", reject_expense_path, class: "btn btn-default", method: :patch
-    = link_to "承認👍", approve_expense_path, class: "btn btn-default", method: :patch
-- else
-  - if @expense.status == :pending
-    = link_to "取り消し🔙", reject_expense_path, class:"btn btn-default", method: :patch
+- if @expense.comment?
+  %div.balloon
+    %div.faceicon
+      = image_tag current_user.gravatar_url, class: "img-circle gravatar"
+    %div.chatting
+      %div.says
+        %p= simple_format(@expense.comment)
