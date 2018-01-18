@@ -23,8 +23,9 @@
                 = expense.created_at.strftime("%Y-%m-%d")
                 %span.glyphicon.glyphicon-time
                 = "#{time_ago_in_words(expense.created_at)}前"
-                %div.category
-                  %span.label-category= expense.category_i18n
+              %p
+                %span.glyphicon.glyphicon-tags
+                = expense.category_i18n
             %div.col-md-4
               %div.price
                 %span.glyphicon.glyphicon-yen
