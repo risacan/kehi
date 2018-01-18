@@ -4,7 +4,7 @@
 //= require chartkick
 
 $(document).on('ready turbolinks:load', function() {
-  $('.js-expense-panel').on('click', function() {
+  $(document).on('click', '.js-expense-panel', function() {
     window.location = $(this).data('detail-url');
   });
 });
