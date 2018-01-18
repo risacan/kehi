@@ -11,7 +11,7 @@ class Company < ApplicationRecord
   end
 
   def amount_by_category_last_month
-    Expense.where(user: users).last_month.group(:category).sum(:amount)
+    Expense.where(user: users).this_month(Time.zone.now.last_month).group(:category).sum(:amount)
   end
 
   def number_of_category

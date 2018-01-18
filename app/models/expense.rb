@@ -24,8 +24,7 @@ class Expense < ApplicationRecord
     category9: 9,
     category10: 10
   }
-  scope :this_month, -> { where(created_at: Time.now.all_month) }
-  scope :last_month, -> { where(created_at: Time.now.last_month.all_month)}
+  scope :this_month, -> (date = Time.zone.now) { where(created_at: date.all_month) }
   scope :approved, -> { where.not(approved_at: nil) }
   scope :rejected, -> { where.not(rejected_at: nil).where("confirmed_by != user_id") }
   scope :retrieved, -> { where.not(rejected_at: nil).where("confirmed_by = user_id") }
