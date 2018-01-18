@@ -29,4 +29,6 @@
         %div.row
           %div.col-lg-12
             %h2 📊 先月との比較
-            = column_chart [{name: "先月", data: @amount_by_category_last_month},{name: "今月", data: @amount_by_category}]
+            - last_month = @amount_by_category_last_month.transform_keys{ |k| I18n.t(k, scope: "enums.expense.category") }
+            - this_month = @amount_by_category.transform_keys{ |k| I18n.t(k, scope: "enums.expense.category") }
+            = column_chart [{name: "先月", data: last_month}, {name: "今月", data:this_month}]
