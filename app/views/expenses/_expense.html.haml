@@ -1,13 +1,15 @@
 %div{class: "expense expense-#{expense.status}"}
   %div.panel.panel-default
-    %div.panel-body
+    %div.panel-body.js-expense-panel{ data: { 'detail-url': edit_expense_path(expense) } }
       %div.media
         %div.media-left
           = image_tag current_user.gravatar_url, class: "img-circle gravatar"
         %div.media-body
           %div.row
             %div.details.col-md-8
-              %h3= link_to expense.title, expense_path(expense.id)
+              %h3
+                = expense.title
+                %small= expense.user.name
               %p= expense.purpose
               %p
                 = "#{expense.paid_at.strftime("%Y年%m月%d日")}に#{expense.paid_to}に支払われました。"
@@ -25,6 +27,3 @@
                 %span.glyphicon.glyphicon-yen
                   = expense.amount
                 %p.status= "#{I18n.t(expense.status, scope: "models.expense.status")}"
-          - if current_user.admin?
-            %div.comment
-              =link_to "承認・却下する", edit_expense_path(expense), class: "btn btn-default"
