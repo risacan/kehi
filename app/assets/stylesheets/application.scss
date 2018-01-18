@@ -335,6 +335,13 @@ div.filters {
   }
 }
 
+.expense_list_simple {
+  .label {
+    min-width: 40px;
+    margin: 0 15px 0 0;
+  }
+}
+
 .js-expense-panel {
   background: #fff;
   cursor: pointer;

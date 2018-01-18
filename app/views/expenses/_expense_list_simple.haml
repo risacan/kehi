@@ -1,0 +1,11 @@
+:ruby
+  colors = {
+    pending: "info",
+    approved: "success",
+    rejected: "danger",
+    retrieved: "default"
+  }
+=link_to edit_expense_path(expense), class: "list-group-item" do
+  %span{class: "label label-#{colors[expense.status]}"}
+    #{I18n.t(expense.status, scope: "models.expense.status")}
+  %span= expense.title

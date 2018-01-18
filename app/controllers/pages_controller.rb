@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   def index
-    @expenses = current_user.expenses.order(created_at: :desc).first(5)
+    @my_latest_expenses = current_user.expenses.order(created_at: :desc).first(10)
+    @company_latest_expenses = company_expenses.order(created_at: :desc).first(10)
+    @my_expenses = current_user.expenses
     @company_expenses = company_expenses
     @amount_by_category = amount_by_category
     @number_of_category = number_of_category
