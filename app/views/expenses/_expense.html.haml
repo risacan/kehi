@@ -1,6 +1,9 @@
+- clickable = true if local_assigns[:url].present?
+- url = nil if local_assigns[:url].blank?
+
 %div{class: "expense expense-#{expense.status}"}
   %div.panel.panel-default
-    %div.panel-body.js-expense-panel{ data: { 'detail-url': edit_expense_path(expense) } }
+    %div.panel-body{ class: ('js-expense-panel' if clickable), data: { 'detail-url': url } }
       %div.media
         %div.media-left
           = image_tag current_user.gravatar_url, class: "img-circle gravatar"
