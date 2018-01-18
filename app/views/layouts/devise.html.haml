@@ -8,6 +8,5 @@
     = javascript_include_tag 'application'
   %body
     %div.container
-      - flash.each do |type, message|
-        %div{class: "alert alert-#{type}"}= message
+      = render "layouts/alert_message"
       = yield
