@@ -41,36 +41,30 @@ class ExpensesController < ApplicationController
     @expenses = @expenses.page(params[:page])
   end
 
-  def approve
+  def edit
     @expense = Expense.find(params[:id])
-    @expense.approved_at = Time.zone.now
-    @expense.confirmed_by = current_user.id
-    if @expense.save
-      flash[:success] = "#{I18n.t(@expense.status, scope: "models.expense.status")}しました✅"
-      redirect_to expense_path(@expense)
-    else
-      flash[:success] = "#{I18n.t(@expense.status, scope: "models.expense.status")}できませんでした..."
-      redirect_to expense_path(@expense)
-    end
+    redirect_to root_url unless authorized?
   end
 
-  def reject
+  def update
+    attributes = {
+      rejected_at: params[:expense][:status] == "reject" ? Time.zone.now : nil,
+      approved_at: params[:expense][:status] == "approve" ? Time.zone.now : nil,
+      comment: params[:expense][:comment],
+      confirmed_by: current_user.id
+    }
     @expense = Expense.find(params[:id])
-    @expense.rejected_at = Time.zone.now
-    @expense.confirmed_by = current_user.id
-    if @expense.save
-      flash[:success] = "#{I18n.t(@expense.status, scope: "models.expense.status")}しました✅"
+    if @expense.update(attributes)
       redirect_to expense_path(@expense)
     else
-      flash[:success] = "#{I18n.t(@expense.status, scope: "models.expense.status")}できませんでした..."
-      redirect_to expense_path(@expense)
+      render 'edit'
     end
   end
 
   private
 
   def expense_params
-    params.require(:expense).permit(:title, :category, :paid_at, :paid_to, :amount, :purpose)
+    params.require(:expense).permit(:title, :category, :paid_at, :paid_to, :amount, :purpose, :comment)
   end
 
   def authorized?

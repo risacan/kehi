@@ -1,0 +1,27 @@
+%div.page-header
+  %h1 承認・却下する
+= render "expenses/expense", expense: @expense
+%div.row
+  %div.col-md-6
+    %div.panel
+      %div.panel-body
+        = simple_form_for(@expense) do |f|
+          %div.form-horizontal
+            = f.error_notification
+            .form-inputs
+              %div.form-group
+                %div.col-sm-10.col-sm-offset-2
+                  %label.radio-inline
+                    %input{ type: "radio", name: "expense[status]", id: "inlineRadio1", value: "approve", checked: true}
+                    承認
+                  %label.radio-inline
+                    %input{ type: "radio", name: "expense[status]", id: "inlineRadio2", value: "reject" }
+                    却下
+              %div.form-group
+                %label.col-sm-2.control-label comment
+                %div.col-sm-10
+                  = f.input :comment, label: false
+              %div.form-group
+                %div.col-sm-10.col-sm-offset-2
+                  .form-actions
+                    = f.button :submit, "送信！", class: "btn-lg btn-primary"

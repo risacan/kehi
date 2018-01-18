@@ -1,13 +1,18 @@
+- clickable = true if local_assigns[:url].present?
+- url = nil if local_assigns[:url].blank?
+
 %div{class: "expense expense-#{expense.status}"}
   %div.panel.panel-default
-    %div.panel-body
+    %div.panel-body{ class: ('js-expense-panel' if clickable), data: { 'detail-url': url } }
       %div.media
         %div.media-left
           = image_tag current_user.gravatar_url, class: "img-circle gravatar"
         %div.media-body
           %div.row
             %div.details.col-md-8
-              %h3= link_to expense.title, expense_path(expense.id)
+              %h3
+                = expense.title
+                %small= expense.user.name
               %p= expense.purpose
               %p
                 = "#{expense.paid_at.strftime("%Y年%m月%d日")}に#{expense.paid_to}に支払われました。"
@@ -20,10 +25,6 @@
                 = "#{time_ago_in_words(expense.created_at)}前"
                 %div.category
                   %span.label-category= expense.category_i18n
-                  - if current_user.admin?
-                    %button.btn.btn-primary.btn-sm
-                      %span.glyphicon.glyphicon-pencil
-                      コメントを書く
             %div.col-md-4
               %div.price
                 %span.glyphicon.glyphicon-yen

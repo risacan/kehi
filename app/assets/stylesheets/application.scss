@@ -222,12 +222,6 @@
         border-radius: 5em;
         padding: 12px 16px;
       }
-
-      .label-comment {
-        border: solid 1px;
-        border-radius: 5em;
-        padding: 12px 16px;
-      }
     }
   }
 
@@ -239,6 +233,10 @@
       font-size: 24px;
       font-weight: 700;
     }
+  }
+
+  .comment {
+    padding: 5px;
   }
 }
 
@@ -346,5 +344,62 @@ div.filters {
   h2 {
     font-size: 1em;
     font-weight: 700;
+  }
+}
+
+.js-expense-panel {
+  background: #fff;
+  cursor: pointer;
+  transition: all  0.3s ease;
+
+  &:hover, &:focus {
+    background: #e5e5e5;
+  }
+}
+
+.balloon {
+  width: 100%;
+  margin: 1.5em 0;
+  overflow: hidden;
+
+  .faceicon {
+    float: left;
+    margin-right: -90px;
+    width: 80px;
+  }
+
+  img{
+    width: 100%;
+    height: auto;
+    border: solid 3px #d7ebfe;
+    border-radius: 50%;
+  }
+
+  .chatting {
+    width: 100%;
+  }
+}
+
+.says {
+  display: inline-block;
+  position: relative;
+  margin: 5px 0 0 105px;
+  padding: 17px 13px;
+  border-radius: 12px;
+  background: #d7ebfe;
+
+  &:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 18px;
+    left: -24px;
+    border: 12px solid transparent;
+    border-right: 12px solid #d7ebfe;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
   }
 }
