@@ -15,15 +15,15 @@ class PagesController < ApplicationController
   private
 
   def amount_by_category
-    current_user.company.amount_by_category
+    company_expenses.this_month.group_by_category.sum(:amount)
   end
 
   def amount_by_category_last_month
-    current_user.company.amount_by_category_last_month
+    company_expenses.this_month(Time.zone.now.last_month).group_by_category.sum(:amount)
   end
 
   def number_of_category
-    current_user.company.number_of_category
+    company_expenses.this_month.group_by_category.count
   end
 
   def company_expenses
