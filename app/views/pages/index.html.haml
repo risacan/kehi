@@ -1,21 +1,14 @@
 - if current_user.admin?
   %div.page-header
-    %h1 今月の経費まとめ
+    %h1
+      今月の経費まとめ
+      %small= current_user.company.name
   %div.panel.panel-primary.summary
     %div.panel-heading
       %div.panel-title
         = "今日 #{Time.zone.now.strftime("%Y年%m月%d日")}まで"
     %div.panel-body
-      %div.row
-        %div.col-lg-4
-          %h2 📄 申請済み経費の合計額
-          %p #{number_with_delimiter(@company_expenses.this_month.sum(:amount), delimiter: ",")}円
-        %div.col-lg-4
-          %h2 💸 承認済みの経費合計額
-          %p #{number_with_delimiter(@company_expenses.this_month.approved.sum(:amount), delimiter: ",")}円
-        %div.col-lg-4
-          %h2 💰 未承認の経費合計額
-          %p #{number_with_delimiter(@company_expenses.this_month.pending.sum(:amount), delimiter: ",")}円
+      =render "pages/summary_amount", base_expenses: @company_expenses
     %ul.list-group
       %li.list-group-item
         %div.row
@@ -52,25 +45,7 @@
       %div.panel-title
         = "今日 #{Time.zone.now.strftime("%Y年%m月%d日")}まで"
     %div.panel-body
-      %div.row
-        %div.col-lg-4
-          %h2 📄 申請済み経費の合計額
-          %p #{number_with_delimiter(@my_expenses.this_month.sum(:amount), delimiter: ",")}円
-        %div.col-lg-4
-          %h2 💸 承認済みの経費合計額
-          %p #{number_with_delimiter(@my_expenses.this_month.approved.sum(:amount), delimiter: ",")}円
-        %div.col-lg-4
-          %h2 💰 未承認の経費合計額
-          %p #{number_with_delimiter(@company_expenses.this_month.pending.sum(:amount), delimiter: ",")}円
-    %ul.list-group
-      %li.list-group-item
-        %div.row
-          %div.col-lg-6
-            %h2 📊 カテゴリ別申請額合計
-            = pie_chart @amount_by_category.transform_keys{ |k| I18n.t(k, scope: "enums.expense.category") }
-          %div.col-lg-6
-            %h2 📊 カテゴリ別申請数
-            = column_chart @number_of_category.transform_keys{ |k| I18n.t(k, scope: "enums.expense.category") }
+      =render "pages/summary_amount", base_expenses: @my_expenses
   %div.row
     %div.col-lg-6
       %div.page-header

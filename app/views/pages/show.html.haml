@@ -1,34 +1,26 @@
-- if current_user.admin?
-  %div.page-header
-    %h1 今月の経費まとめ
-  %div.panel.panel-primary.summary
-    %div.panel-heading
-      %div.panel-title
-        = "今日 #{Time.zone.now.strftime("%Y年%m月%d日")}まで"
-    %div.panel-body
+%div.page-header
+  %h1
+    今月の経費まとめ
+    %small= current_user.company.name
+%div.panel.panel-primary.summary
+  %div.panel-heading
+    %div.panel-title
+      = "今日 #{Time.zone.now.strftime("%Y年%m月%d日")}まで"
+  %div.panel-body
+    =render "pages/summary_amount", base_expenses: @company_expenses
+  %ul.list-group
+    %li.list-group-item
       %div.row
-        %div.col-lg-4
-          %h2 📄 申請済み経費の合計額
-          %p #{current_user.company.expenses.this_month.sum(:amount)}円
-        %div.col-lg-4
-          %h2 💸 承認済みの経費合計額
-          %p #{current_user.company.expenses.this_month.approved.sum(:amount)}円
-        %div.col-lg-4
-          %h2 💰 未承認の経費合計額
-          %p #{current_user.company.expenses.this_month.pending.sum(:amount)}円
-    %ul.list-group
-      %li.list-group-item
-        %div.row
-          %div.col-lg-6
-            %h2 📊 カテゴリ別申請額合計
-            = pie_chart @amount_by_category.transform_keys{ |k| I18n.t(k, scope: "enums.expense.category") }
-          %div.col-lg-6
-            %h2 📊 カテゴリ別申請数
-            = column_chart @number_of_category.transform_keys{ |k| I18n.t(k, scope: "enums.expense.category") }
-      %li.list-group-item
-        %div.row
-          %div.col-lg-12
-            %h2 📊 先月との比較
-            - last_month = @amount_by_category_last_month.transform_keys{ |k| I18n.t(k, scope: "enums.expense.category") }
-            - this_month = @amount_by_category.transform_keys{ |k| I18n.t(k, scope: "enums.expense.category") }
-            = column_chart [{name: "先月", data: last_month}, {name: "今月", data:this_month}]
+        %div.col-lg-6
+          %h2 📊 カテゴリ別申請額合計
+          = pie_chart @amount_by_category.transform_keys{ |k| I18n.t(k, scope: "enums.expense.category") }
+        %div.col-lg-6
+          %h2 📊 カテゴリ別申請数
+          = column_chart @number_of_category.transform_keys{ |k| I18n.t(k, scope: "enums.expense.category") }
+    %li.list-group-item
+      %div.row
+        %div.col-lg-12
+          %h2 📊 先月との比較
+          - last_month = @amount_by_category_last_month.transform_keys{ |k| I18n.t(k, scope: "enums.expense.category") }
+          - this_month = @amount_by_category.transform_keys{ |k| I18n.t(k, scope: "enums.expense.category") }
+          = column_chart [{name: "先月", data: last_month}, {name: "今月", data:this_month}]
