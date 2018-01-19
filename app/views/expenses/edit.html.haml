@@ -1,30 +1,41 @@
 %div.page-header
-  %h1 承認・却下する
+  - if current_user.admin?
+    %h1 承認・却下する
+  - else
+    %h1 申請を取り消す
 = render "expenses/expense", expense: @expense
 %div.row.container
   %div.col-md-12
-    = simple_form_for(@expense) do |f|
-      %div.form-horizontal
-        = f.error_notification
-        .form-inputs
-          %div.form-group.expense-edit
-            %div.row
-              %div.col-sm-6
-                %input{ type: "radio", name: "expense[status]", id: "radio_approve", value: "approve", checked: true }
-                %label{for: "radio_approve", class:"approved"}
-                  承認
-              %div.col-sm-6
-                %input{ type: "radio", name: "expense[status]", id: "radio_reject", value: "reject" }
-                %label{for: "radio_reject", class:"rejected"}
-                  却下
-          %div.balloon.expense-comment
-            %div.container
-              %div.faceicon
-                = image_tag current_user.gravatar_url, class: "img-circle gravatar"
-              %div.chatting
-                %div.says
-                  %p= f.input :comment, label: false
+    - if current_user.admin?
+      = simple_form_for(@expense) do |f|
+        %div.form-horizontal
+          = f.error_notification
+          .form-inputs
+            %div.form-group.expense-edit
+              %div.row
+                %div.col-sm-6
+                  %input{ type: "radio", name: "expense[status]", id: "radio_approve", value: "approve", checked: true }
+                  %label{for: "radio_approve", class:"approved"}
+                    承認
+                %div.col-sm-6
+                  %input{ type: "radio", name: "expense[status]", id: "radio_reject", value: "reject" }
+                  %label{for: "radio_reject", class:"rejected"}
+                    却下
+              %div.balloon.expense-comment
+                %div.container
+                  %div.faceicon
+                    = image_tag current_user.gravatar_url, class: "img-circle gravatar"
+                  %div.chatting
+                    %div.says
+                      %p= f.input :comment, label: false
           %div.form-group
             %div.col-sm-10.col-sm-offset-2
             .form-actions
               = f.button :submit, "送信！", class: "btn btn-block btn-lg btn-primary"
+    - else
+      = form_for(@expense) do |f|
+        %div.form-group
+          %div.col-sm-10.col-sm-offset-2
+          .form-actions
+            = f.hidden_field :status, value: "reject"
+            = f.button "申請を取り消す", class: "btn btn-block btn-lg btn-danger"

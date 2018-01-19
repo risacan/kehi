@@ -45,6 +45,7 @@ class ExpensesController < ApplicationController
   def edit
     @expense = Expense.find(params[:id])
     redirect_to root_url unless authorized?
+    redirect_to expense_path(@expense) if @expense.status != :pending
   end
 
   def update
