@@ -29,6 +29,6 @@ class PagesController < ApplicationController
   end
 
   def company_expenses
-    current_user.company.expenses
+    current_user.company.expenses.countable
   end
 end
