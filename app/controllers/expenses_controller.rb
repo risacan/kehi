@@ -8,6 +8,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.new(expense_params)
     @expense.user = current_user
     if @expense.save
+      flash[:success] = "経費を新しく申請しました✅"
       redirect_to expense_path(@expense)
     else
       render "new"
