@@ -1,27 +1,30 @@
 %div.page-header
   %h1 承認・却下する
 = render "expenses/expense", expense: @expense
-%div.row
-  %div.col-md-6
-    %div.panel
-      %div.panel-body
-        = simple_form_for(@expense) do |f|
-          %div.form-horizontal
-            = f.error_notification
-            .form-inputs
-              %div.form-group
-                %div.col-sm-10.col-sm-offset-2.expense-edit
-                  %input{ type: "radio", name: "expense[status]", id: "radio_approve", value: "approve", checked: true }
-                  %label{for: "radio_approve", class:"radio-inline switch-on"}
-                    承認
-                  %input{ type: "radio", name: "expense[status]", id: "radio_reject", value: "reject" }
-                  %label{for: "radio_reject", class:"radio-inline switch-off"}
-                    却下
-              %div.form-group
-                %label.col-sm-2.control-label comment
-                %div.col-sm-10
-                  = f.input :comment, label: false
-              %div.form-group
-                %div.col-sm-10.col-sm-offset-2
-                  .form-actions
-                    = f.button :submit, "送信！", class: "btn-lg btn-primary"
+%div.row.container
+  %div.col-md-12
+    = simple_form_for(@expense) do |f|
+      %div.form-horizontal
+        = f.error_notification
+        .form-inputs
+          %div.form-group.expense-edit
+            %div.row
+              %div.col-sm-6
+                %input{ type: "radio", name: "expense[status]", id: "radio_approve", value: "approve", checked: true }
+                %label{for: "radio_approve", class:"approved"}
+                  承認
+              %div.col-sm-6
+                %input{ type: "radio", name: "expense[status]", id: "radio_reject", value: "reject" }
+                %label{for: "radio_reject", class:"rejected"}
+                  却下
+          %div.balloon.expense-comment
+            %div.container
+              %div.faceicon
+                = image_tag current_user.gravatar_url, class: "img-circle gravatar"
+              %div.chatting
+                %div.says
+                  %p= f.input :comment, label: false
+          %div.form-group
+            %div.col-sm-10.col-sm-offset-2
+            .form-actions
+              = f.button :submit, "送信！", class: "btn btn-block btn-lg btn-primary"
