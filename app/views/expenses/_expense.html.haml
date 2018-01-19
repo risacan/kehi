@@ -6,7 +6,7 @@
     %div.panel-body{ class: ('js-expense-panel' if clickable), data: { 'detail-url': url } }
       %div.media
         %div.media-left
-          = image_tag current_user.gravatar_url, class: "img-circle gravatar"
+          = image_tag expense.user.gravatar_url, class: "img-circle gravatar"
         %div.media-body
           %div.row
             %div.details.col-md-8
