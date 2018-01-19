@@ -249,16 +249,14 @@
 }
 
 .expense-retrieved {
-  // FIXME
-  color: $gray-lighter;
-
   .panel {
     a {
       color: $gray-lighter;
       text-decoration: line-through;
     }
-    border-left-color: $gray-lighter;
+    border-left: solid 1px $gray-lighter;
   }
+
   .details {
     .title {
       text-decoration: line-through;
