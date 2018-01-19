@@ -39,6 +39,5 @@
                   %li= link_to "ログイン", new_user_session_path
         %main.col-sm-9.col-lg-10
           .container
-            - flash.each do |type, message|
-              %div{class: "alert alert-#{type}"}= message
+            = render "layouts/alert_message"
             = yield

@@ -16,16 +16,6 @@
               %p= expense.purpose
               %p
                 = "#{expense.paid_at.strftime("%Y年%m月%d日")}に#{expense.paid_to}に支払われました。"
-              %p
-                %span.glyphicon.glyphicon-user
-                = expense.user.name
-                %span.glyphicon.glyphicon-calendar
-                = expense.created_at.strftime("%Y-%m-%d")
-                %span.glyphicon.glyphicon-time
-                = "#{time_ago_in_words(expense.created_at)}前"
-              %p
-                %span.glyphicon.glyphicon-tags
-                = expense.category_i18n
             %div.col-md-4
               %div.price
                 %span.glyphicon.glyphicon-yen
