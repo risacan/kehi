@@ -21,9 +21,13 @@
           - current_user.company.users.each do |user|
             %li
               =link_to user.name, controller: "expenses", action: "index", user: user
-- @expenses.each do |expense|
-  - if expense.status == :pending
-    = render "expenses/expense_list", expense: expense, url: edit_expense_path(expense)
-  - else
-    = render "expenses/expense_list", expense: expense, url: expense_path(expense)
-= paginate @expenses
+- if @expenses.empty?
+  %div.zero-item
+    0件です！😭
+- else
+  - @expenses.each do |expense|
+    - if expense.status == :pending
+      = render "expenses/expense_list", expense: expense, url: edit_expense_path(expense)
+    - else
+      = render "expenses/expense_list", expense: expense, url: expense_path(expense)
+  = paginate @expenses
