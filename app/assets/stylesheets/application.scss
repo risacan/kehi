@@ -286,6 +286,22 @@
   }
 }
 
+.label-pending {
+  background-color: $brand-info;
+}
+
+.label-success {
+  background-color: $brand-success;
+}
+
+.label-danger {
+  background-color: $brand-danger;
+}
+
+.label-retrieved {
+  background-color: $gray-light;
+}
+
 // Sign in
 
 .form-signin {
