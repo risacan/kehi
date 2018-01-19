@@ -6,7 +6,7 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
-  %body
+  %body.devise
     %div.container
       = render "layouts/alert_message"
       = yield

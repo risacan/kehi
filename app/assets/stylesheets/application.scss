@@ -406,3 +406,28 @@ div.filters {
     color: $gray-lighter;
   }
 }
+
+// login
+
+.login {
+  padding: 15px;
+  max-width: 500px;
+
+  .panel-body {
+    padding: 50px;
+  }
+
+  .page-header {
+    margin-top: 0px;
+  }
+}
+
+.logo {
+  max-width: 200px;
+  height: auto;
+}
+
+// devise layout
+body.devise {
+  background-color: lighten($gray-base, 95%);
+}
