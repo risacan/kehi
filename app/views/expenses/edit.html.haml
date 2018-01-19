@@ -12,9 +12,11 @@
           = f.error_notification
           .form-inputs
             %div.form-group.expense-edit
+              %p
+                1. 承認か却下を選んでください
               %div.row
                 %div.col-sm-6
-                  %input{ type: "radio", name: "expense[status]", id: "radio_approve", value: "approve", checked: true }
+                  %input{ type: "radio", name: "expense[status]", id: "radio_approve", value: "approve", checked: true}
                   %label{for: "radio_approve", class:"approved"}
                     承認
                 %div.col-sm-6
@@ -23,6 +25,8 @@
                     却下
               %div.balloon.expense-comment
                 %div.container
+                  %p
+                    2. コメントを添えましょう〜
                   %div.faceicon
                     = image_tag current_user.gravatar_url, class: "img-circle gravatar"
                   %div.chatting
