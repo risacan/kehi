@@ -451,3 +451,44 @@
 body.devise {
   background-color: lighten($gray-base, 95%);
 }
+
+// edit
+
+.expense-edit {
+  input {
+    display: none;
+  }
+
+  label{
+    display: block;
+    float: left;
+    cursor: pointer;
+    width: 500px;
+    margin: 0;
+    padding: 10px;
+    background: #bdc3c7;
+    color: #869198;
+    font-size: 16px;
+    text-align: center;
+    line-height: 1;
+    transition: .2s;
+  }
+
+  label:first-of-type{
+    border-radius: 3px 0 0 3px;
+  }
+
+  label:last-of-type{
+    border-radius: 0 3px 3px 0;
+  }
+
+  input[type="radio"]:checked + .switch-on {
+    background-color: $brand-success;
+    color: #fff;
+  }
+
+  input[type="radio"]:checked + .switch-off {
+    background-color: $brand-danger;
+    color: #fff;
+  }
+}

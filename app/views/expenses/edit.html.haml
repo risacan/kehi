@@ -10,12 +10,12 @@
             = f.error_notification
             .form-inputs
               %div.form-group
-                %div.col-sm-10.col-sm-offset-2
-                  %label.radio-inline
-                    %input{ type: "radio", name: "expense[status]", id: "inlineRadio1", value: "approve", checked: true}
+                %div.col-sm-10.col-sm-offset-2.expense-edit
+                  %input{ type: "radio", name: "expense[status]", id: "radio_approve", value: "approve", checked: true }
+                  %label{for: "radio_approve", class:"radio-inline switch-on"}
                     承認
-                  %label.radio-inline
-                    %input{ type: "radio", name: "expense[status]", id: "inlineRadio2", value: "reject" }
+                  %input{ type: "radio", name: "expense[status]", id: "radio_reject", value: "reject" }
+                  %label{for: "radio_reject", class:"radio-inline switch-off"}
                     却下
               %div.form-group
                 %label.col-sm-2.control-label comment
