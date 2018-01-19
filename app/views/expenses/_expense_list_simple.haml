@@ -2,3 +2,4 @@
   %span{class: "label label-#{expense.status}"}
     #{I18n.t(expense.status, scope: "models.expense.status")}
   %span= expense.title
+  %span.pull-right= expense.user.name
