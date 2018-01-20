@@ -13,7 +13,6 @@
               %h3
                 = expense.title
                 %small= expense.user.name
-              %p= expense.purpose
               %p
                 = "#{expense.paid_at.strftime("%Y年%m月%d日")}に#{expense.paid_to}に支払われました。"
             %div.col-md-4
