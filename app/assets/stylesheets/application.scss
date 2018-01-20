@@ -355,7 +355,8 @@
 
 .expense_list_simple {
   .label {
-    min-width: 40px;
+    display: inline-block;
+    min-width: 80px;
     margin: 0 15px 0 0;
   }
 }
