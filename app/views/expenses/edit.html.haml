@@ -16,11 +16,11 @@
                 1. 承認か却下を選んでください
               %div.row
                 %div.col-sm-6
-                  %input{ type: "radio", name: "expense[status]", id: "radio_approve", value: "approve", checked: true}
+                  %input{ type: "radio", name: "expense[status]", id: "radio_approve", value: "approve", required: "required" }
                   %label{for: "radio_approve", class:"approved"}
                     承認
                 %div.col-sm-6
-                  %input{ type: "radio", name: "expense[status]", id: "radio_reject", value: "reject" }
+                  %input{ type: "radio", name: "expense[status]", id: "radio_reject", value: "reject", required: "required" }
                   %label{for: "radio_reject", class:"rejected"}
                     却下
               %div.balloon.expense-comment
@@ -35,7 +35,7 @@
           %div.form-group
             %div.col-sm-10.col-sm-offset-2
             .form-actions
-              = f.button :submit, "送信！", class: "btn btn-block btn-lg btn-primary"
+              = f.button :submit, "送信！", class: "js-submit-button btn btn-block btn-lg btn-primary", disabled: "disabled"
     - else
       = form_for(@expense) do |f|
         %div.form-group
