@@ -1,8 +1,15 @@
-%div.page-header
-  %h1 事業所登録
-= simple_form_for(@company) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :name, label: "事業所名"
-  .form-actions
-    = f.button :submit, "登録する", class: "btn-lg btn-primary"
+%h1.text-center
+  = image_tag "logo.png", class: "logo"
+%div.container.login
+  %div.panel.panel-default
+    %div.panel-body
+      %div.form-vertical
+        %div.page-header
+          新規事業所登録
+        = simple_form_for(@company) do |f|
+          = f.error_notification
+          %div.form-group
+            = f.input :name, label: "事業所名"
+          .form-actions
+            = f.button :submit, "登録して利用開始", class: "btn btn-block btn-primary"
+  = link_to "Logo from LogoMakr.com", "http://logomakr.com"

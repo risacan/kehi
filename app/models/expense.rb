@@ -31,6 +31,8 @@ class Expense < ApplicationRecord
   scope :pending, -> { where(approved_at: nil, rejected_at: nil)}
   scope :user, -> (user) { where("user_id = ?", user) }
   scope :group_by_category, -> { group(:category) }
+  scope :countable, -> { pending.or(approved) }
+  scope :applied, -> { pending.or(approved).or(rejected) }
 
   def status
     if approved_at.nil? && rejected_at.nil?

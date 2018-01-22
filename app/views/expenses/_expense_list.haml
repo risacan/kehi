@@ -6,14 +6,13 @@
     %div.panel-body{ class: ('js-expense-panel' if clickable), data: { 'detail-url': url } }
       %div.media
         %div.media-left
-          = image_tag current_user.gravatar_url, class: "img-circle gravatar"
+          = image_tag expense.user.gravatar_url, class: "img-circle gravatar"
         %div.media-body
           %div.row
             %div.details.col-md-8
               %h3
                 = expense.title
                 %small= expense.user.name
-              %p= expense.purpose
               %p
                 = "#{expense.paid_at.strftime("%Y年%m月%d日")}に#{expense.paid_to}に支払われました。"
             %div.col-md-4

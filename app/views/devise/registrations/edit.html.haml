@@ -31,8 +31,8 @@
             %br/
             = f.password_field :current_password, autocomplete: "off", class: "form-control"
       .form-actions
-        = f.submit "更新する", class: "btn btn-primary"
+        = f.submit "更新する", class: "btn btn-block btn-primary"
   %div.page-header
     %h1 退会する
   %div
-    #{button_to "アカウントを削除して退会する", registration_path(resource_name), data: { confirm: "本当に削除しますか?" }, method: :delete, class:"btn btn-danger"}
+    #{button_to "アカウントを削除して退会する", registration_path(resource_name), data: { confirm: "本当に削除しますか?" }, method: :delete, class:"btn btn-block btn-danger"}

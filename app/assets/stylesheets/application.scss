@@ -249,16 +249,14 @@
 }
 
 .expense-retrieved {
-  // FIXME
-  color: $gray-lighter;
-
   .panel {
     a {
       color: $gray-lighter;
       text-decoration: line-through;
     }
-    border-left-color: $gray-lighter;
+    border-left: solid 1px $gray-lighter;
   }
+
   .details {
     .title {
       text-decoration: line-through;
@@ -284,6 +282,22 @@
       text-decoration: line-through;
     }
   }
+}
+
+.label-pending {
+  background-color: $brand-info;
+}
+
+.label-approved {
+  background-color: $brand-success;
+}
+
+.label-rejected {
+  background-color: $brand-danger;
+}
+
+.label-retrieved {
+  background-color: $gray-light;
 }
 
 // Sign in
@@ -323,8 +337,12 @@
 
 // expsense
 
-div.filters {
+.filters {
   margin-bottom: 20px;
+}
+
+.zero-item {
+  padding: 30px;
 }
 
 // page#index
@@ -332,6 +350,14 @@ div.filters {
   h2 {
     font-size: 1em;
     font-weight: 700;
+  }
+}
+
+.expense_list_simple {
+  .label {
+    display: inline-block;
+    min-width: 80px;
+    margin: 0 15px 0 0;
   }
 }
 
@@ -397,5 +423,81 @@ div.filters {
   .disabled {
     pointer-events: none;
     color: $gray-lighter;
+  }
+}
+
+// login
+
+.login {
+  padding: 15px;
+  max-width: 500px;
+
+  .panel-body {
+    padding: 50px;
+  }
+
+  .page-header {
+    margin-top: 0px;
+  }
+}
+
+.logo {
+  max-width: 200px;
+  height: auto;
+}
+
+// devise layout
+body.devise {
+  background-color: lighten($gray-base, 95%);
+}
+
+// edit
+
+.expense-edit {
+  input {
+    display: none;
+  }
+
+  label{
+    display: block;
+    float: left;
+    cursor: pointer;
+    width: 100%;
+    height: 200px;
+    padding-top: 92px;
+    background: $gray-lighter;
+    color: $gray-dark;
+    font-size: 16px;
+    text-align: center;
+    line-height: 1;
+    transition: .2s;
+  }
+
+  label:first-of-type{
+    border-radius: 30px;
+  }
+
+  label:last-of-type{
+    border-radius: 30px;
+  }
+
+  input[type="radio"]:checked + .approved {
+    background-color: $brand-success;
+    color: #fff;
+  }
+
+  input[type="radio"]:checked + .rejected {
+    background-color: $brand-danger;
+    color: #fff;
+  }
+}
+
+.expense-comment {
+  .says {
+    padding: 30px;
+  }
+
+  .text {
+    width: 900px;
   }
 }

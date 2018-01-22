@@ -8,6 +8,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.new(expense_params)
     @expense.user = current_user
     if @expense.save
+      flash[:success] = "経費を新しく申請しました✅"
       redirect_to expense_path(@expense)
     else
       render "new"
@@ -44,6 +45,7 @@ class ExpensesController < ApplicationController
   def edit
     @expense = Expense.find(params[:id])
     redirect_to root_url unless authorized?
+    redirect_to expense_path(@expense) if @expense.status != :pending
   end
 
   def update

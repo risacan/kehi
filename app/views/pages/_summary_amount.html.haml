@@ -1,0 +1,10 @@
+%div.row
+  %div.col-lg-4
+    %h2 📄 申請済み経費の合計額
+    %p #{number_with_delimiter(base_expenses.this_month.sum(:amount), delimiter: ",")}円
+  %div.col-lg-4
+    %h2 💸 承認済みの経費合計額
+    %p #{number_with_delimiter(base_expenses.this_month.approved.sum(:amount), delimiter: ",")}円
+  %div.col-lg-4
+    %h2 💰 未承認の経費合計額
+    %p #{number_with_delimiter(base_expenses.this_month.pending.sum(:amount), delimiter: ",")}円
