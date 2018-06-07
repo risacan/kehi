@@ -26,6 +26,8 @@
               %p
                 %span.glyphicon.glyphicon-tags
                 = expense.category_i18n
+                - if expense.category10?
+                  = expense.remark
             %div.col-md-4
               %div.price
                 %span.glyphicon.glyphicon-yen
