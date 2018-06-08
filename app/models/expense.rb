@@ -7,6 +7,8 @@ class Expense < ApplicationRecord
   validates :paid_to, presence: true
   validates :amount, presence: true
   validates :category, presence: true
+  validates :category_other_detail, presence: true,
+    if: Proc.new { |a| a.expenses.category10? }
   validates :approved_at, absence: true,
     if: Proc.new { |a| a.rejected_at.present? }
   validates :rejected_at, absence: true,
