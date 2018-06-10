@@ -23,4 +23,12 @@ $(document).on("ready turbolinks:load", function() {
       $(".js-submit-button").prop("disabled", true);
     }
   });
+
+  $(document).on("change", "#expense_category", function() {
+    if ($(this).val() === "category10") {
+      $(".expense_category_other_detail").show();
+    } else {
+      $(".expense_category_other_detail").hide();
+    }
+  });
 });

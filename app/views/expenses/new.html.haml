@@ -11,6 +11,6 @@
         = f.input :paid_to, label: "支払先"
         = f.input :amount, label: "金額"
         = f.input :category, label: "勘定項目"
-        = f.input :category_other_detail, label: "その他(詳細)"
+        = f.input :category_other_detail, label: "その他(詳細)", id: "expense_category", wrapper_html: { style: 'display: none;' }
       .form-actions
         = f.button :submit, "申請する", class: "btn btn-block btn-primary"
