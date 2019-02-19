@@ -66,7 +66,7 @@ class ExpensesController < ApplicationController
   private
 
   def expense_params
-    params.require(:expense).permit(:title, :category, :paid_at, :paid_to, :amount, :purpose, :comment)
+    params.require(:expense).permit(:title, :category, :category_other_detail, :paid_at, :paid_to, :amount, :purpose, :comment)
   end
 
   def authorized?
